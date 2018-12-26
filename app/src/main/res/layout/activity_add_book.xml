@@ -24,7 +24,7 @@
         android:layout_height="72dp"
         android:ems="10"
         android:fontFamily="casual"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="ISBN:"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="40dp"
@@ -43,6 +43,7 @@
 
     <Button
         android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="148dp"
         android:layout_height="72dp"
         android:fontFamily="casual"
