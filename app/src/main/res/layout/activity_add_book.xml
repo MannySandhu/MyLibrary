@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context="com.sandhu.manny.mylibrary.AddBookActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="254dp"
+        android:layout_height="51dp"
+        android:fontFamily="casual"
+        android:text="Enter book ISBN"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="304dp"
+        android:layout_height="72dp"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:inputType="textPersonName"
+        android:text="ISBN:"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="303dp"
+        android:layout_height="229dp"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="148dp"
+        android:layout_height="72dp"
+        android:fontFamily="casual"
+        android:text="Add Book"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="407dp" />
+
 </android.support.constraint.ConstraintLayout>
