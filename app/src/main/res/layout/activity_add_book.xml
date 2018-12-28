@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/isbnEditText"
         app:layout_constraintVertical_bias="1.0"
         android:layout_marginLeft="65dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/isbnEditText"
         android:layout_width="304dp"
         android:layout_height="72dp"
         android:layout_marginBottom="0dp"
@@ -34,11 +34,11 @@
         android:hint="ISBN:"
         android:inputType="number"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/detailsEditText"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/detailsEditText"
         style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="303dp"
         android:layout_height="229dp"
@@ -48,11 +48,11 @@
         android:fontFamily="casual"
         android:inputType="textMultiLine"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="148dp"
         android:layout_height="72dp"
