@@ -38,9 +38,7 @@ public class AddBookActivity extends AppCompatActivity {
         final TextView editionTextView = (TextView) findViewById(R.id.editionTextView);
         final TextView publishedTextView = (TextView) findViewById(R.id.publishedTextView);
 
-        String isbnValue = "";
-        // example steve jobs book
-        final String stevejobsbook = "9781451648546";
+        //final String stevejobsbook = "9781451648546";
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
 
@@ -48,8 +46,8 @@ public class AddBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //String isbnValue = isbnEditText.getText().toString(); // get the isbn on click
-                String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + stevejobsbook;
+                String isbnValue = isbnEditText.getText().toString(); // get the isbn on click
+                String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnValue;
 
                 //Do http request
                 final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,

@@ -16,6 +16,7 @@
         android:layout_marginRight="8dp"
         android:fontFamily="casual"
         android:text="Add Book"
+        android:textAllCaps="true"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
