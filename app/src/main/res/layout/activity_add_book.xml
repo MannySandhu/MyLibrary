@@ -8,38 +8,41 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="254dp"
-        android:layout_height="51dp"
+        android:layout_width="263dp"
+        android:layout_height="59dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:fontFamily="casual"
         android:text="FIND A BOOK"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/isbnEditText"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/isbnEditText"
         android:layout_width="316dp"
-        android:layout_height="69dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:ems="10"
         android:fontFamily="casual"
         android:hint="Enter a volume ISBN"
         android:inputType="number"
         android:textSize="24sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="71dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/addButton"
@@ -47,43 +50,45 @@
         android:layout_width="238dp"
         android:layout_height="78dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="24dp"
         android:fontFamily="casual"
         android:text="Add Book"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/publishedTextView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="316dp"
         android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/authorTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="154dp"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/authorTextView"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="64dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/editionTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="214dp"
         tools:text="Author" />
 
     <TextView
@@ -94,9 +99,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/publishedTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="274dp"
         tools:text="Edition" />
 
     <TextView
@@ -107,9 +114,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="334dp"
         tools:text="Published" />
 
 </android.support.constraint.ConstraintLayout>
