@@ -19,11 +19,15 @@ import org.json.JSONObject;
 
 public class AddBookActivity extends AppCompatActivity {
 
+    DatabaseHelper mydb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
+
+        //create database
+        mydb = new DatabaseHelper(this);
 
         // wire up widgets
         Button addButton = (Button) findViewById(R.id.addButton);
