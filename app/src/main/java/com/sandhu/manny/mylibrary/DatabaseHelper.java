@@ -1,5 +1,6 @@
 package com.sandhu.manny.mylibrary;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,13 +18,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + "(ISBN INTEGER PRIMARY KEY," +
-                "title TEXT, author TEXT, edition INTEGER, published TEXT)");
+        db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
+                "title TEXT, author TEXT, edition TEXT, published TEXT)");
 
     }
 
@@ -34,4 +34,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    public boolean insertData(String isbn, String title, String author, String edition, String published){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(BOOK_ISBN, isbn);
+        contentValues.put(BOOK_TITLE, title);
+        contentValues.put(BOOK_AUTHOR, author);
+        contentValues.put(BOOK_EDITION, edition);
+        contentValues.put(PUBLICATION_DATE, published);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+    
 }
