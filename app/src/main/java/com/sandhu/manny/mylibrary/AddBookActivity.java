@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,6 +33,7 @@ public class AddBookActivity extends AppCompatActivity {
 
         // wire up widgets
         Button addButton = (Button) findViewById(R.id.addButton);
+        Button findButton = (Button) findViewById(R.id.findButton);
         final EditText isbnEditText = (EditText) findViewById(R.id.isbnEditText);
         final TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
         final TextView authorTextView = (TextView) findViewById(R.id.authorTextView);
@@ -42,7 +44,8 @@ public class AddBookActivity extends AppCompatActivity {
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+
+        findButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -58,10 +61,9 @@ public class AddBookActivity extends AppCompatActivity {
                         String[] result = jsonParser(response);
                         titleTextView.setText(result[0]);
                         authorTextView.setText(result[1]);
-                        genreTextView.setText(result[2]);
-                        publishedTextView.setText(result[3]);
+                        genreTextView.setText(result[2] + " : " + result[3] + "pages");
+                        publishedTextView.setText(result[4]);
 
-                        //findViewById(R.id.addButton).setVisibility(View.GONE);
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -73,10 +75,40 @@ public class AddBookActivity extends AppCompatActivity {
                 requestQueue.add(jsObjRequest);
             }
         });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //if no book selected
+                if(titleTextView.getText().toString() == ""){
+                    // do nothing
+                }else{
+                    // add book to database
+                    String[] genreAndPages = (genreTextView.getText().toString()).split(":");
+
+                    boolean isInserted = mydb.insertData(isbnEditText.getText().toString(),
+                            titleTextView.getText().toString(),
+                            authorTextView.getText().toString(),
+                            genreAndPages[0],
+                            genreAndPages[1],
+                            publishedTextView.getText().toString());
+                    if(isInserted == true){
+                        System.out.println(Toast.makeText(AddBookActivity.this, "Data inserted",Toast.LENGTH_LONG).show();
+                        else{
+                            
+                        }
+                    }
+                }
+            }
+        });
+
+
     }
 
+
     public String[] jsonParser(JSONObject response){
-        String[] result = new String[4]; // volume information holder
+        String[] result = new String[5]; // volume information holder
 
         try {
             JSONArray jsonArray = response.getJSONArray("items");
@@ -93,13 +125,12 @@ public class AddBookActivity extends AppCompatActivity {
                 result[1] = items.getJSONObject("volumeInfo").optString("authors");
 
                 // get category and page count info
-                String category = items.getJSONObject("volumeInfo").optString("categories");
-                String pageCount = items.getJSONObject("volumeInfo").optString("pageCount");
-                result[2] = category + " : " + pageCount + "p";
+                result[2] = items.getJSONObject("volumeInfo").optString("categories");
+                result[3] = items.getJSONObject("volumeInfo").optString("pageCount");
 
                 // get published date
                 String publishedDate = items.getJSONObject("volumeInfo").optString("publishedDate");
-                result[3] = publishedDate;
+                result[4] = publishedDate;
             }
         } catch (JSONException e) {
             e.printStackTrace();
