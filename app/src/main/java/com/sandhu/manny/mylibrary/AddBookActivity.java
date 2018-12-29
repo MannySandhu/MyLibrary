@@ -35,7 +35,7 @@ public class AddBookActivity extends AppCompatActivity {
         final EditText isbnEditText = (EditText) findViewById(R.id.isbnEditText);
         final TextView titleTextView = (TextView) findViewById(R.id.titleTextView);
         final TextView authorTextView = (TextView) findViewById(R.id.authorTextView);
-        final TextView editionTextView = (TextView) findViewById(R.id.editionTextView);
+        final TextView genreTextView = (TextView) findViewById(R.id.genreTextView);
         final TextView publishedTextView = (TextView) findViewById(R.id.publishedTextView);
 
         //final String stevejobsbook = "9781451648546";
@@ -58,7 +58,7 @@ public class AddBookActivity extends AppCompatActivity {
                         String[] result = jsonParser(response);
                         titleTextView.setText(result[0]);
                         authorTextView.setText(result[1]);
-                        editionTextView.setText(result[2]);
+                        genreTextView.setText(result[2]);
                         publishedTextView.setText(result[3]);
 
                         //findViewById(R.id.addButton).setVisibility(View.GONE);
