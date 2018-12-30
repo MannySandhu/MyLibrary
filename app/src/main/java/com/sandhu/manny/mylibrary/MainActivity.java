@@ -16,12 +16,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button addBookButton = (Button)findViewById(R.id.AddBookButton);
+        Button myLibraryButton = (Button)findViewById(R.id.MyLibraryButton);
+
         final Intent addBookIntent = new Intent(this, AddBookActivity.class);
+        final Intent myLibraryIntent = new Intent(this, MyLibraryActivity.class);
 
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(addBookIntent);
+            }
+        });
+        myLibraryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(myLibraryIntent);
             }
         });
 

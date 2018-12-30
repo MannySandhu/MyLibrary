@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String BOOK_TITLE = "title";
     public static final String BOOK_AUTHOR = "author";
     public static final String BOOK_GENRE = "genre";
+    public static final String BOOK_PAGES = "pages";
     public static final String PUBLICATION_DATE = "published";
 
     public DatabaseHelper(@Nullable Context context) {
@@ -23,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
-                "title TEXT, author TEXT, genre TEXT, published TEXT)");
+                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
 
     }
 
@@ -35,13 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData(String isbn, String title, String author, String genre, String published){
+    public boolean insertData(String isbn, String title, String author, String genre, String pages, String published){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(BOOK_ISBN, isbn);
         contentValues.put(BOOK_TITLE, title);
         contentValues.put(BOOK_AUTHOR, author);
         contentValues.put(BOOK_GENRE, genre);
+        contentValues.put(BOOK_PAGES, pages);
         contentValues.put(PUBLICATION_DATE, published);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
