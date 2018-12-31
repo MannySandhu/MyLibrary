@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MyLibraryActivity extends AppCompatActivity {
 
     DatabaseHelper mydb = new DatabaseHelper(this);
@@ -21,49 +23,48 @@ public class MyLibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_library);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-
+        createDataViews();
 
     }
 
     // create views
     private void createDataViews() {
 
+        int id=1;
         Cursor resultSet = mydb.getAllData();
-        int librarySize = resultSet.getCount();
 
-        if(librarySize == 0){
+        if(resultSet.getCount() == 0){
             showMessage("Empty Library", "There are no books in your library.");
         }else{
             StringBuffer buffer = new StringBuffer();
             while(resultSet.moveToNext()){
+
                 buffer.append("ISBN :" + resultSet.getString(0) +"\n" );
                 buffer.append("Title :" + resultSet.getString(1) +"\n" );
                 buffer.append("Author :" + resultSet.getString(2) +"\n" );
                 buffer.append("Genre :" + resultSet.getString(3) +"\n" );
                 buffer.append("Pages :" + resultSet.getString(4) +"\n" );
                 buffer.append("Published :" + resultSet.getString(5) +"\n\n" );
+
+                layoutParams = new RelativeLayout.LayoutParams
+                        (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+                mLayout = (RelativeLayout) findViewById(R.id.ListDataLayout);
+
+                TextView view = new TextView(this);
+                view.setId(id);
+                view.setLayoutParams(layoutParams);
+                view.setText(buffer.toString());
+
+                int currentViewId = view.getId();
+                layoutParams.addRule(RelativeLayout.BELOW, currentViewId - 1);
+                mLayout.addView(view, layoutParams);
+
             }
-            showMessage("Books found", buffer.toString());
-        }
-
-        for (int i = 1; i < librarySize + 1; ++i) {
-            layoutParams = new RelativeLayout.LayoutParams
-                    (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            mLayout = (RelativeLayout) findViewById(R.id.ListDataLayout);
-
-            TextView view = new TextView(this);
-            view.setId(i);
-            view.setText(i + " view");
-            view.setLayoutParams(layoutParams);
-
-            int id = view.getId();
-            layoutParams.addRule(RelativeLayout.BELOW, id - 1);
-            mLayout.addView(view, layoutParams);
+            //showMessage("Books found", buffer.toString());
         }
     }
+
 
     private void showMessage(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
