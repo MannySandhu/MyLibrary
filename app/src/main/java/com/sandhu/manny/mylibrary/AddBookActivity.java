@@ -93,6 +93,9 @@ public class AddBookActivity extends AppCompatActivity {
                             genreAndPages[0],
                             genreAndPages[1],
                             publishedTextView.getText().toString());
+
+                    String d = mydb.getAllData().toString();
+                    System.err.println("Trying to add: " + d);
                     if(isInserted == true){
                         Toast.makeText(AddBookActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                     }else{

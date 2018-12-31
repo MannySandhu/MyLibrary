@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MyLibrary</string>
     <string name="title_activity_my_library">MyLibraryActivity</string>
-    <string name="data_text">
+    <string name="large_text">
         "Load data here"
-
     </string>
+
     <string name="action_settings">Settings</string>
 </resources>

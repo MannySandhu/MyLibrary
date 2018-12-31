@@ -8,10 +8,13 @@
     tools:context="com.sandhu.manny.mylibrary.MyLibraryActivity"
     tools:showIn="@layout/activity_my_library">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/ListDataLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:orientation="horizontal">
+
+    </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

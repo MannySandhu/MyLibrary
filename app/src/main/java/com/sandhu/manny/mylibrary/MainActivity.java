@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         });
         myLibraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(myLibraryIntent);
+            public void onClick(View v) { startActivity(myLibraryIntent);
             }
         });
 
