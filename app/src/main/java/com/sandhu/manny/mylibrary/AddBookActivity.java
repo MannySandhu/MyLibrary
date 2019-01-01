@@ -50,29 +50,37 @@ public class AddBookActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String isbnValue = isbnEditText.getText().toString(); // get the isbn on click
-                String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnValue;
 
-                //Do http request
-                final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,
-                        null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
+                if(isbnValue.length() < 10) {
+                    Toast.makeText(AddBookActivity.this, "ISBN must be 10 or 13 digits", Toast.LENGTH_LONG).show();
+                }else {
+                    String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnValue;
 
-                        String[] result = jsonParser(response);
-                        titleTextView.setText(result[0]);
-                        authorTextView.setText(result[1]);
-                        genreTextView.setText(result[2] + " : " + result[3] + "pages");
-                        publishedTextView.setText(result[4]);
+                    //Do http request
+                    final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,
+                            null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
 
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                });
+                            String[] result = jsonParser(response);
 
-                requestQueue.add(jsObjRequest);
+                            if(result[0] != null){
+                                titleTextView.setText(result[0]);
+                                authorTextView.setText(result[1]);
+                                genreTextView.setText(result[2] + " : " + result[3]);
+                                publishedTextView.setText(result[4]);
+                            }
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    });
+
+                    requestQueue.add(jsObjRequest);
+                }
             }
         });
 
@@ -81,8 +89,8 @@ public class AddBookActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //if no book selected
-                if(titleTextView.getText().toString() == ""){
-                    // do nothing
+                if(titleTextView.getText().toString().equalsIgnoreCase("Title:")){
+                    Toast.makeText(AddBookActivity.this, "Select a book", Toast.LENGTH_LONG).show();
                 }else {
                     // add book to database
                     String[] genreAndPages = (genreTextView.getText().toString()).split(":");
@@ -94,18 +102,19 @@ public class AddBookActivity extends AppCompatActivity {
                             genreAndPages[1],
                             publishedTextView.getText().toString());
 
-                    String d = mydb.getAllData().toString();
-                    System.err.println("Trying to add: " + d);
                     if(isInserted == true){
-                        Toast.makeText(AddBookActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddBookActivity.this, "Book added", Toast.LENGTH_LONG).show();
+                        titleTextView.setText("");
                     }else{
-                        Toast.makeText(AddBookActivity.this, "Error Inserting Data", Toast.LENGTH_LONG).show();
+                        if(titleTextView.getText().toString() == "null")
+                        {
+                            Toast.makeText(AddBookActivity.this, "Enter a valid ISBN", Toast.LENGTH_LONG).show();
+                        }
+                        Toast.makeText(AddBookActivity.this, "Book already exists", Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
-
-
     }
 
 
@@ -113,27 +122,36 @@ public class AddBookActivity extends AppCompatActivity {
         String[] result = new String[5]; // volume information holder
 
         try {
-            JSONArray jsonArray = response.getJSONArray("items");
-            for(int i=0; i< jsonArray.length(); ++i){
 
-                JSONObject items = jsonArray.getJSONObject(i);
+            String totalItems = response.optString("totalItems");
+            if(totalItems.equalsIgnoreCase("0")) {
 
-                // get title info
-                String title = items.getJSONObject("volumeInfo").optString("title");
-                String subtitle = items.getJSONObject("volumeInfo").optString("subtitle");
-                result[0] = title + " : " + subtitle;
+                Toast.makeText(AddBookActivity.this, "Invalid ISBN", Toast.LENGTH_LONG).show();
+            }else{
 
-                // get author info
-                result[1] = items.getJSONObject("volumeInfo").optString("authors");
+                JSONArray jsonArray = response.getJSONArray("items");
+                for(int i=0; i< jsonArray.length(); ++i){
 
-                // get category and page count info
-                result[2] = items.getJSONObject("volumeInfo").optString("categories");
-                result[3] = items.getJSONObject("volumeInfo").optString("pageCount");
+                    JSONObject items = jsonArray.getJSONObject(i);
 
-                // get published date
-                String publishedDate = items.getJSONObject("volumeInfo").optString("publishedDate");
-                result[4] = publishedDate;
+                    // get title info
+                    String title = items.getJSONObject("volumeInfo").optString("title");
+                    String subtitle = items.getJSONObject("volumeInfo").optString("subtitle");
+                    result[0] = title + " : " + subtitle;
+
+                    // get author info
+                    result[1] = items.getJSONObject("volumeInfo").optString("authors");
+
+                    // get category and page count info
+                    result[2] = items.getJSONObject("volumeInfo").optString("categories");
+                    result[3] = items.getJSONObject("volumeInfo").optString("pageCount");
+
+                    // get published date
+                    String publishedDate = items.getJSONObject("volumeInfo").optString("publishedDate");
+                    result[4] = publishedDate;
+                }
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
