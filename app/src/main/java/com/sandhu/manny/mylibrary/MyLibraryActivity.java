@@ -40,9 +40,12 @@ public class MyLibraryActivity extends AppCompatActivity {
             StringBuffer buffer = new StringBuffer();
             while(resultSet.moveToNext()){
 
-                // display info
+                buffer.append("ISBN :" + resultSet.getString(0) +"\n" );
                 buffer.append("Title :" + resultSet.getString(1) +"\n" );
-                buffer.append("Author :" + resultSet.getString(2) +"\n\n" );
+                buffer.append("Author :" + resultSet.getString(2) +"\n" );
+                buffer.append("Genre :" + resultSet.getString(3) +"\n" );
+                buffer.append("Pages :" + resultSet.getString(4) +"\n" );
+                buffer.append("Published :" + resultSet.getString(5) +"\n\n" );
 
                 layoutParams = new RelativeLayout.LayoutParams
                         (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -55,23 +58,16 @@ public class MyLibraryActivity extends AppCompatActivity {
                 view.setText(buffer.toString());
                 view.setClickable(true);
 
-                // complete info
-                final String isbn = resultSet.getString(0);
-                final String title = resultSet.getString(1);
-                final String author = resultSet.getString(2);
-                final String genre = resultSet.getString(3);
-                final String pages = resultSet.getString(4);
-                final String published = resultSet.getString(5);
+                String title = resultSet.getString(1);
+                String author = resultSet.getString(2);
+                String genre = resultSet.getString(3);
+                String pages = resultSet.getString(4);
+                String published = resultSet.getString(5);
 
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        showMessage("Book:", isbn  + "\n\n"+
-                                                        title + "\n\n"+
-                                                        author + "\n\n"+
-                                                        genre + "\n\n"+
-                                                        pages + "\n\n"+
-                                                        published);
+                        // inspect book, delete book, recommendations
                     }
                 });
 
