@@ -29,10 +29,10 @@ public class MyLibraryActivity extends AppCompatActivity {
     }
 
     // create views
-    private void createDataViews() {
+    public void createDataViews() {
 
         int id=1;
-        Cursor resultSet = mydb.getAllData();
+        final Cursor resultSet = mydb.getAllData();
 
         if(resultSet.getCount() == 0){
             showMessage("Empty Library", "There are no books in your library.");
@@ -40,12 +40,9 @@ public class MyLibraryActivity extends AppCompatActivity {
             StringBuffer buffer = new StringBuffer();
             while(resultSet.moveToNext()){
 
-                buffer.append("ISBN :" + resultSet.getString(0) +"\n" );
+                // display info
                 buffer.append("Title :" + resultSet.getString(1) +"\n" );
-                buffer.append("Author :" + resultSet.getString(2) +"\n" );
-                buffer.append("Genre :" + resultSet.getString(3) +"\n" );
-                buffer.append("Pages :" + resultSet.getString(4) +"\n" );
-                buffer.append("Published :" + resultSet.getString(5) +"\n\n" );
+                buffer.append("Author :" + resultSet.getString(2) +"\n\n" );
 
                 layoutParams = new RelativeLayout.LayoutParams
                         (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -54,14 +51,36 @@ public class MyLibraryActivity extends AppCompatActivity {
                 TextView view = new TextView(this);
                 view.setId(id);
                 view.setLayoutParams(layoutParams);
+                view.setClickable(true);
                 view.setText(buffer.toString());
+                view.setClickable(true);
+
+                // complete info
+                final String isbn = resultSet.getString(0);
+                final String title = resultSet.getString(1);
+                final String author = resultSet.getString(2);
+                final String genre = resultSet.getString(3);
+                final String pages = resultSet.getString(4);
+                final String published = resultSet.getString(5);
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showMessage("Book:", isbn  + "\n\n"+
+                                                        title + "\n\n"+
+                                                        author + "\n\n"+
+                                                        genre + "\n\n"+
+                                                        pages + "\n\n"+
+                                                        published);
+                    }
+                });
+
 
                 int currentViewId = view.getId();
                 layoutParams.addRule(RelativeLayout.BELOW, currentViewId - 1);
                 mLayout.addView(view, layoutParams);
 
             }
-            //showMessage("Books found", buffer.toString());
         }
     }
 
