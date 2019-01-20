@@ -1,5 +1,6 @@
 package com.sandhu.manny.mylibrary;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -64,13 +65,44 @@ public class MyLibraryActivity extends AppCompatActivity {
                 String pages = resultSet.getString(4);
                 String published = resultSet.getString(5);
 
+                // Alert builder
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         // inspect book, delete book, recommendations
-                    }
-                });
 
+
+                        // Alert dialogue
+                        builder.setTitle("Delete book from library");
+                        builder.setMessage("Are you sure?");
+
+                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing but close the dialog
+
+                                dialog.dismiss();
+                            }
+                        });
+
+                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                // Do nothing
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        // End alert dialogue --------------------
+                    }
+                    // End on click
+                });
 
                 int currentViewId = view.getId();
                 layoutParams.addRule(RelativeLayout.BELOW, currentViewId - 1);
