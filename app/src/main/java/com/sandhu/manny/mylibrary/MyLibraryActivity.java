@@ -32,59 +32,58 @@ public class MyLibraryActivity extends AppCompatActivity {
     // create views
     public void createDataViews() {
 
-        int id=1;
         final Cursor resultSet = mydb.getAllData();
 
         if(resultSet.getCount() == 0){
             showMessage("Empty Library", "There are no books in your library.");
         }else{
-            StringBuffer buffer = new StringBuffer();
+
+            int id = 1;
             while(resultSet.moveToNext()){
 
-                buffer.append("ISBN :" + resultSet.getString(0) +"\n" );
-                buffer.append("Title :" + resultSet.getString(1) +"\n" );
-                buffer.append("Author :" + resultSet.getString(2) +"\n" );
-                buffer.append("Genre :" + resultSet.getString(3) +"\n" );
-                buffer.append("Pages :" + resultSet.getString(4) +"\n" );
-                buffer.append("Published :" + resultSet.getString(5) +"\n\n" );
+                final Volume volume = new Volume(resultSet.getString(0),
+                        resultSet.getString(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5));
 
                 layoutParams = new RelativeLayout.LayoutParams
                         (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                mLayout = (RelativeLayout) findViewById(R.id.ListDataLayout);
 
+                mLayout = (RelativeLayout) findViewById(R.id.ListDataLayout);
                 TextView view = new TextView(this);
-                view.setId(id);
+                view.setId(id++);
                 view.setLayoutParams(layoutParams);
                 view.setClickable(true);
-                view.setText(buffer.toString());
+                view.setText(volume.getTitle() + "\n"
+                        + volume.getAuthor() + "\n"
+                        + volume.getGenre() + "\n"
+                        + volume.getPages() + "\n"
+                        + volume.getPublished() + "\n");
                 view.setClickable(true);
-
-                String title = resultSet.getString(1);
-                String author = resultSet.getString(2);
-                String genre = resultSet.getString(3);
-                String pages = resultSet.getString(4);
-                String published = resultSet.getString(5);
 
                 // Alert builder
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
 
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         // inspect book, delete book, recommendations
-
+                        System.out.println("****INSPECTING**** -->" + view.getId());
 
                         // Alert dialogue
-                        builder.setTitle("Delete book from library");
-                        builder.setMessage("Are you sure?");
+                        builder.setTitle("Delete Book?");
+                        builder.setMessage(volume.getTitle());
 
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
                                 // Do nothing but close the dialog
-
+                                mydb.deleteData(volume.getIsbn());
+                                mydb.close();
                                 dialog.dismiss();
+                                recreate();
                             }
                         });
 

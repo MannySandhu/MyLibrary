@@ -60,6 +60,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-
+    public Integer deleteData (String isbn) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, "ISBN = ?",new String[] {isbn});
+    }
 
 }
