@@ -9,8 +9,14 @@ import android.support.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    // Database
     public static final String DATABASE_NAME = "book.db";
+
+    // Table
     public static final String TABLE_NAME = "book_data";
+    public static final String TABLE_NAME_SHELF = "book_data";
+
+    // Data
     public static final String BOOK_ISBN = "ISBN";
     public static final String BOOK_TITLE = "title";
     public static final String BOOK_AUTHOR = "author";
@@ -27,11 +33,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
 
+        // Shelf table
+        db.execSQL("create table " + TABLE_NAME_SHELF + "(ISBN TEXT PRIMARY KEY," +
+                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_SHELF);
         onCreate(db);
 
 

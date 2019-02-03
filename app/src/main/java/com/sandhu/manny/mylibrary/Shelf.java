@@ -1,0 +1,24 @@
+package com.sandhu.manny.mylibrary;
+
+import java.util.ArrayList;
+
+public class Shelf {
+
+    private ArrayList<Volume> shelf = new ArrayList<>();
+
+    public Shelf(ArrayList<Volume> shelf){
+        shelf = this.shelf;
+    }
+
+    public ArrayList<Volume> getShelf() {
+        return shelf;
+    }
+
+    public Volume getVolume(String isbn){
+        for(Volume v : shelf){
+            if(v.getIsbn() == isbn)
+                return v;
+        }
+        return null;
+    }
+}
