@@ -8,7 +8,6 @@
     tools:context="com.sandhu.manny.mylibrary.MyLibraryActivity"
     tools:showIn="@layout/activity_my_library">
 
-
     <RelativeLayout
         android:id="@+id/ListDataLayout"
         android:layout_width="match_parent"
