@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/CurrentReadsButton"
+        android:id="@+id/ReadingListsButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="238dp"
         android:layout_height="79dp"

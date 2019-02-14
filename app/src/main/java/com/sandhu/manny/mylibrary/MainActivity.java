@@ -17,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button addBookButton = (Button)findViewById(R.id.AddBookButton);
         Button myLibraryButton = (Button)findViewById(R.id.MyLibraryButton);
+        Button myReadingListsButton = (Button)findViewById(R.id.ReadingListsButton);
 
         final Intent addBookIntent = new Intent(this, AddBookActivity.class);
         final Intent myLibraryIntent = new Intent(this, MyLibraryActivity.class);
+        final Intent myListsIntent = new Intent(this, MyShelves.class);
 
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         myLibraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { startActivity(myLibraryIntent);
+            }
+        });
+        myReadingListsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(myListsIntent);
             }
         });
 

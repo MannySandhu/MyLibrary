@@ -34,12 +34,12 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="New Shelf"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/scrollableView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollableView"
         android:layout_width="match_parent"
         android:layout_height="364dp"
         android:layout_marginStart="8dp"
@@ -53,6 +53,9 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
+            android:id="@+id/scrollableShelfListLayout"
+            android:orientation="vertical"
+            android:layout_gravity="top"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

@@ -2,8 +2,10 @@ package com.sandhu.manny.mylibrary;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import java.util.ArrayList;
 
@@ -16,15 +18,21 @@ public class MyShelves extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_shelves);
 
+        LinearLayout scrollableLayout = (LinearLayout)findViewById(R.id.scrollableShelfListLayout);
         int id = 0;
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams
                 (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
-        for(int i=0; i<shelfData.size(); i++){
+        for(int i=0; i<10; i++){
             ProgressBar pb = new ProgressBar(this);
+            pb.setProgress(40);
             pb.setId(id++);
             pb.setLayoutParams(layoutParams);
             pb.setClickable(true);
+
+            int currentViewId = pb.getId();
+            layoutParams.addRule(RelativeLayout.BELOW, currentViewId - 1);
+            scrollableLayout.addView(pb, layoutParams);
 
         }
 
