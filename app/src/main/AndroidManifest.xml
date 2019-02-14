@@ -36,7 +36,8 @@
         <activity
             android:name=".ProgressActivity"
             android:label="@string/title_activity_progress"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MyShelves"></activity>
     </application>
 
 </manifest>
