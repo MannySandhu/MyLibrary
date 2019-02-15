@@ -80,7 +80,6 @@ public class MyLibraryActivity extends AppCompatActivity {
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing but close the dialog
                                 mydb.deleteData(volume.getIsbn(), true);
                                 mydb.close();
                                 dialog.dismiss();
@@ -92,7 +91,6 @@ public class MyLibraryActivity extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                                 // Do nothing
                                 dialog.dismiss();
                             }

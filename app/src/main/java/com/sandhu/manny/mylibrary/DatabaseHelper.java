@@ -14,11 +14,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Table
     public static final String TABLE_NAME = "book_data";
-    public static final String TABLE_NAME_CATEGORIES = "categories_data";
-    public static final String TABLE_NAME_SHELF = "book_data";
+    public static final String TABLE_NAME_LABELS = "label_data";
+    public static final String TABLE_NAME_SHELVES = "book_data";
 
-    // Catergory Data
-    public static final String CATEGORY_LABEL = "category";
+    // Category Data
+    public static final String LABEL = "label";
+    public static final String LABEL_INFORMATION = "information";
 
     // Volume Data
     public static final String BOOK_ISBN = "ISBN";
@@ -36,20 +37,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
-
         // Shelf categories
-        db.execSQL("create table " + TABLE_NAME_CATEGORIES + "(categories TEXT PRIMARY KEY)");
-
+        db.execSQL("create table " + TABLE_NAME_LABELS + "(label TEXT PRIMARY KEY, information TEXT)");
         // Shelf volumes table
-        db.execSQL("create table " + TABLE_NAME_SHELF + "(ISBN TEXT PRIMARY KEY," +
+        db.execSQL("create table " + TABLE_NAME_SHELVES + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_CATEGORIES);
-        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_SHELF);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_LABELS);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_SHELVES);
         onCreate(db);
     }
 
@@ -70,6 +69,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean insertLabelData(String label, String information){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(LABEL, label);
+        contentValues.put(LABEL_INFORMATION, information);
+        long result = db.insert(TABLE_NAME_LABELS, null, contentValues);
+
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public Cursor getLabelData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor resultSet = db.rawQuery("SELECT * FROM "+ TABLE_NAME_LABELS, null);
+        return resultSet;
+    }
+
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor resultSet = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
@@ -82,13 +100,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(library) {
              return db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
         }else {
-            return db.delete(TABLE_NAME_SHELF, "ISBN = ?", new String[]{isbn});
+            return db.delete(TABLE_NAME_SHELVES, "ISBN = ?", new String[]{isbn});
         }
     }
 
-    public Integer deleteCategory (String category) {
+    public Integer deleteLabelData (String label) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_CATEGORIES, "category = ?",new String[] {category});
+        return db.delete(TABLE_NAME_LABELS, "label = ?",new String[] {label});
     }
 
 }

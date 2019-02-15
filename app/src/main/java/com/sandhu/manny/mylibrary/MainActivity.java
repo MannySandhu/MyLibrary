@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent addBookIntent = new Intent(this, AddBookActivity.class);
         final Intent myLibraryIntent = new Intent(this, MyLibraryActivity.class);
-        final Intent myListsIntent = new Intent(this, MyShelves.class);
+        final Intent myListsIntent = new Intent(this, MyShelvesActivity.class);
 
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
