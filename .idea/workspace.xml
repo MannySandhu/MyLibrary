@@ -22,7 +22,6 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MyShelves.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MyShelves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_shelves.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_shelves.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,17 +59,17 @@
       <file leaf-file-name="MyShelves.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MyShelves.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="127" column="35" lean-forward="true" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+            <state relative-caret-position="289">
+              <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
               <folding>
                 <element signature="e#2461#3892#0" expanded="true" />
                 <element signature="e#3891#3892#0" expanded="true" />
-                <element signature="e#4289#5387#0" expanded="true" />
-                <element signature="e#4633#4868#0" expanded="true" />
-                <element signature="e#4867#4868#0" expanded="true" />
+                <element signature="e#4396#5770#0" expanded="true" />
+                <element signature="e#4722#5114#0" expanded="true" />
+                <element signature="e#5113#5114#0" expanded="true" />
                 <element signature="e#4952#5219#0" expanded="true" />
                 <element signature="e#5218#5219#0" expanded="true" />
-                <element signature="e#5386#5387#0" expanded="true" />
+                <element signature="e#5769#5770#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2662,7 +2661,7 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.7147614" />
       <window_info anchor="right" id="Preview" order="4" weight="0.32942432" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.2963374" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.40288568" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32963374" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32920355" />
       <window_info anchor="bottom" id="Logcat" order="7" />
@@ -3071,17 +3070,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MyShelves.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="127" column="35" lean-forward="true" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
+        <state relative-caret-position="289">
+          <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
           <folding>
             <element signature="e#2461#3892#0" expanded="true" />
             <element signature="e#3891#3892#0" expanded="true" />
-            <element signature="e#4289#5387#0" expanded="true" />
-            <element signature="e#4633#4868#0" expanded="true" />
-            <element signature="e#4867#4868#0" expanded="true" />
+            <element signature="e#4396#5770#0" expanded="true" />
+            <element signature="e#4722#5114#0" expanded="true" />
+            <element signature="e#5113#5114#0" expanded="true" />
             <element signature="e#4952#5219#0" expanded="true" />
             <element signature="e#5218#5219#0" expanded="true" />
-            <element signature="e#5386#5387#0" expanded="true" />
+            <element signature="e#5769#5770#0" expanded="true" />
           </folding>
         </state>
       </provider>

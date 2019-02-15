@@ -28,7 +28,10 @@ public class MyShelves extends AppCompatActivity {
 
         Button addShelfButton = (Button)findViewById(R.id.newShelfButton);
 
-        String [] data = {"Autobiographys", "Summer Reading", "School Books"};
+//        ArrayList<String> data = new ArrayList<>();
+//        data.add("Autobiography");
+//        data.add("Fantasy");
+//        data.add("Summer Reading");
 
         LinearLayout scrollableLayout = (LinearLayout)findViewById(R.id.scrollableShelfListLayout);
         int id = 0;
@@ -40,11 +43,12 @@ public class MyShelves extends AppCompatActivity {
                 (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 
+        // load db data
 
-        for(int i=0; i<data.length; i++){
+        for(int i=0; i<data.size(); i++){ // up to result set size
 
             final TextView tv = new TextView(this);
-            tv.setText(data[i]);
+            tv.setText(data.get(i));
             ProgressBar pb = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
             pb.setProgress(i*40);
             pb.setPadding(10, 10, 10, 50 );
@@ -71,7 +75,6 @@ public class MyShelves extends AppCompatActivity {
                 public void onClick(View view) {
                     // inspect book, delete book, recommendations
                     System.out.println("****INSPECTING**** -->" + rl.getId());
-
 
 
                     // Alert dialogue
@@ -125,7 +128,10 @@ public class MyShelves extends AppCompatActivity {
 
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        recreate();
+                        if(input != null){
+                            // add category to db and recreate
+                            recreate();
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -142,7 +148,6 @@ public class MyShelves extends AppCompatActivity {
                 }
                 AlertDialog alert = builder.create();
                 alert.show();
-
                 // End alert dialogue --------------------
             }
         });
