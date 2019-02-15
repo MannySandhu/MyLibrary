@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class MyShelves extends AppCompatActivity {
 
+    DatabaseHelper mydb = new DatabaseHelper(this);
     private ArrayList<Shelf> shelfData = new ArrayList<>();
 
     @Override
@@ -37,7 +38,7 @@ public class MyShelves extends AppCompatActivity {
 
         for(int i=0; i<data.length; i++){
 
-            TextView tv = new TextView(this);
+            final TextView tv = new TextView(this);
             tv.setText(data[i]);
             ProgressBar pb = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
             pb.setProgress(i*40);
@@ -56,11 +57,45 @@ public class MyShelves extends AppCompatActivity {
             rl.setClickable(true);
             rl.setPadding(10, 10, 10, 50);
 
+
+            // Alert builder
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
             rl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // inspect book, delete book, recommendations
                     System.out.println("****INSPECTING**** -->" + rl.getId());
+
+
+
+                    // Alert dialogue
+                    builder.setTitle("Delete Shelf?");
+                    builder.setMessage(tv.getText());
+
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Do nothing but close the dialog
+                           // mydb.deleteData(tv.getText().toString(), false);
+                            //mydb.close();
+                            dialog.dismiss();
+                            recreate();
+                        }
+                    });
+
+                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            // Do nothing
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                    // End alert dialogue --------------------
                 }
             });
 
@@ -82,6 +117,14 @@ public class MyShelves extends AppCompatActivity {
         shelfData.add(s1);
         shelfData.add(s2);
         shelfData.add(s3);
+    }
+
+    private void showMessage(String title, String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 
 

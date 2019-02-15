@@ -80,9 +80,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         if(library) {
-             int code = db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
+             return db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
+        }else {
+            return db.delete(TABLE_NAME_SHELF, "ISBN = ?", new String[]{isbn});
         }
-        return db.delete(TABLE_NAME_SHELF, "ISBN = ?",new String[] {isbn});
     }
 
     public Integer deleteCategory (String category) {
