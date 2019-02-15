@@ -81,7 +81,7 @@ public class MyLibraryActivity extends AppCompatActivity {
 
                             public void onClick(DialogInterface dialog, int which) {
                                 // Do nothing but close the dialog
-                                mydb.deleteData(volume.getIsbn());
+                                mydb.deleteData(volume.getIsbn(), true);
                                 mydb.close();
                                 dialog.dismiss();
                                 recreate();

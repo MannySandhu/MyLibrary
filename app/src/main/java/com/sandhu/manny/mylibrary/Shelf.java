@@ -14,11 +14,16 @@ public class Shelf {
         return shelf;
     }
 
-    public Volume getVolume(String isbn){
+    public Volume getVolumeByIsbn(String isbn){
         for(Volume v : shelf){
             if(v.getIsbn() == isbn)
                 return v;
         }
         return null;
     }
+
+    public int getShelfSize(){
+        return shelf.size();
+    }
+
 }

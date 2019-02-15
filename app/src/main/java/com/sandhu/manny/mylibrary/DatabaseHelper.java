@@ -14,9 +14,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Table
     public static final String TABLE_NAME = "book_data";
+    public static final String TABLE_NAME_CATEGORIES = "categories_data";
     public static final String TABLE_NAME_SHELF = "book_data";
 
-    // Data
+    // Catergory Data
+    public static final String CATEGORY_LABEL = "category";
+
+    // Volume Data
     public static final String BOOK_ISBN = "ISBN";
     public static final String BOOK_TITLE = "title";
     public static final String BOOK_AUTHOR = "author";
@@ -33,19 +37,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
 
-        // Shelf table
+        // Shelf categories
+        db.execSQL("create table " + TABLE_NAME_CATEGORIES + "(categories TEXT PRIMARY KEY)");
+
+        // Shelf volumes table
         db.execSQL("create table " + TABLE_NAME_SHELF + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_CATEGORIES);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_SHELF);
         onCreate(db);
-
-
     }
 
     public boolean insertData(String isbn, String title, String author, String genre, String pages, String published){
@@ -71,9 +76,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    public Integer deleteData (String isbn) {
+    public Integer deleteData (String isbn, boolean library) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, "ISBN = ?",new String[] {isbn});
+
+        if(library) {
+             int code = db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
+        }
+        return db.delete(TABLE_NAME_SHELF, "ISBN = ?",new String[] {isbn});
+    }
+
+    public Integer deleteCategory (String category) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_CATEGORIES, "category = ?",new String[] {category});
     }
 
 }
