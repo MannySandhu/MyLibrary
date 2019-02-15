@@ -5,6 +5,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -22,6 +25,8 @@ public class MyShelves extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_shelves);
+
+        Button addShelfButton = (Button)findViewById(R.id.newShelfButton);
 
         String [] data = {"Autobiographys", "Summer Reading", "School Books"};
 
@@ -104,6 +109,43 @@ public class MyShelves extends AppCompatActivity {
             scrollableLayout.addView(rl);
         }
 
+
+        // Alert builder
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final EditText input = new EditText(this);
+
+        addShelfButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Alert dialogue
+                builder.setTitle("New Shelf");
+                builder.setMessage("Enter shelf name");
+                builder.setView(input);
+                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        recreate();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing
+                        input.setText(null);
+                        dialog.dismiss();
+                    }
+                });
+                if (input.getParent() != null){
+                    ((ViewGroup)input.getParent()).removeView(input);
+                }
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                // End alert dialogue --------------------
+            }
+        });
     }
 
 
