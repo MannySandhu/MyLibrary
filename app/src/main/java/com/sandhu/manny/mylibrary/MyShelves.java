@@ -24,8 +24,9 @@ public class MyShelves extends AppCompatActivity {
                 (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
         for(int i=0; i<10; i++){
-            ProgressBar pb = new ProgressBar(this);
+            ProgressBar pb = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
             pb.setProgress(40);
+            pb.setPadding(10, 10, 10, 10 );
             pb.setId(id++);
             pb.setLayoutParams(layoutParams);
             pb.setClickable(true);
