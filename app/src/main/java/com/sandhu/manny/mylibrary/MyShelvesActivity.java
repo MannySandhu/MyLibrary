@@ -1,6 +1,7 @@
 package com.sandhu.manny.mylibrary;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -53,16 +54,11 @@ public class MyShelvesActivity extends AppCompatActivity {
 
             while(resultSet.moveToNext()){
 
-            //for(int i=0; i<data.size(); i++){ // up to result set size
-
                 final TextView tv = new TextView(this);
                 tv.setText(resultSet.getString(0));
                 ProgressBar pb = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
                 pb.setProgress(40);
                 pb.setPadding(10, 10, 10, 50 );
-                //pb.setId(id++);
-                //pb.setLayoutParams(layoutParams);
-                //pb.setClickable(true);
 
                 final RelativeLayout rl = new RelativeLayout(this);
                 tv.setLayoutParams(layoutParams);
@@ -74,42 +70,46 @@ public class MyShelvesActivity extends AppCompatActivity {
                 rl.setClickable(true);
                 rl.setPadding(10, 10, 10, 50);
 
-
                 // Alert builder
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                final Intent loadShelfIntent = new Intent(this, ShelfActivity.class);
 
                 rl.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         // inspect book, delete book, recommendations
                         System.out.println("****INSPECTING**** -->" + rl.getId());
+                        System.out.println(tv.getText().toString());
 
+                        // go to shelf activity
+                        loadShelfIntent.putExtra("Label", tv.getText().toString());
+                        startActivity(loadShelfIntent);
 
-                        // Alert dialogue
-                        builder.setTitle("Delete Shelf?");
-                        builder.setMessage(tv.getText());
-
-                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int which) {
-                                mydb.deleteLabelData(tv.getText().toString());
-                                mydb.close();
-                                dialog.dismiss();
-                                recreate();
-                            }
-                        });
-
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing
-                                dialog.dismiss();
-                            }
-                        });
-                        AlertDialog alert = builder.create();
-                        alert.show();
-                        // End alert dialogue --------------------
+//                        // Alert dialogue
+//                        builder.setTitle("Delete Shelf?");
+//                        builder.setMessage(tv.getText());
+//
+//                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                mydb.deleteLabelData(tv.getText().toString());
+//                                mydb.close();
+//                                dialog.dismiss();
+//                                recreate();
+//                            }
+//                        });
+//
+//                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                // Do nothing
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                        AlertDialog alert = builder.create();
+//                        alert.show();
+//                        // End alert dialogue --------------------
                     }
                 });
 
@@ -125,6 +125,7 @@ public class MyShelvesActivity extends AppCompatActivity {
         // Alert builder
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
+        input.setSingleLine(true);
 
         Button addShelfButton = (Button)findViewById(R.id.newShelfButton);
         addShelfButton.setOnClickListener(new View.OnClickListener() {
