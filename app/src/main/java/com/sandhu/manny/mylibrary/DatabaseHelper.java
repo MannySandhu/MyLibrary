@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database
@@ -15,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Table
     public static final String TABLE_NAME = "book_data";
     public static final String TABLE_NAME_LABELS = "label_data";
-    public static final String TABLE_NAME_SHELVES = "book_data";
+    //public static final String TABLE_NAME_SHELVES = "book_data";
 
     // Category Data
     public static final String LABEL = "label";
@@ -33,26 +35,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
+    //private SQLiteDatabase db;
+    private ArrayList<String> labels = new ArrayList<>();
+
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //this.db = db;
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
                 "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
-        // Shelf categories
         db.execSQL("create table " + TABLE_NAME_LABELS + "(label TEXT PRIMARY KEY, information TEXT)");
-        // Shelf volumes table
-        db.execSQL("create table " + TABLE_NAME_SHELVES + "(ISBN TEXT PRIMARY KEY," +
-                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_LABELS);
-        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_SHELVES);
         onCreate(db);
     }
 
-    public boolean insertData(String isbn, String title, String author, String genre, String pages, String published){
+    public void createShelfTable(String table_name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + table_name);
+        db.execSQL("create table " + table_name + "(ISBN TEXT PRIMARY KEY," +
+                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
+    }
+
+    public boolean insertData(String tableName, String isbn, String title, String author, String genre, String pages, String published){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(BOOK_ISBN, isbn);
@@ -61,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(BOOK_GENRE, genre);
         contentValues.put(BOOK_PAGES, pages);
         contentValues.put(PUBLICATION_DATE, published);
-        long result = db.insert(TABLE_NAME, null, contentValues);
+        long result = db.insert(tableName, null, contentValues);
 
         if(result == -1)
             return false;
@@ -88,20 +96,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return resultSet;
     }
 
-    public Cursor getAllData(){
+    public Cursor getAllData(String tableName){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor resultSet = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
+        Cursor resultSet = db.rawQuery("SELECT * FROM "+ tableName, null);
         return resultSet;
     }
 
-    public Integer deleteData (String isbn, boolean library) {
+//    public Cursor getAllShelfData(){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor resultSet = db.rawQuery("SELECT * FROM "+ TABLE_NAME_SHELVES, null);
+//        return resultSet;
+//    }
+
+    public Integer deleteData (String tableName, String isbn, boolean library) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        if(library) {
-             return db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
-        }else {
-            return db.delete(TABLE_NAME_SHELVES, "ISBN = ?", new String[]{isbn});
-        }
+//        if(library) {
+//             return db.delete(TABLE_NAME, "ISBN = ?", new String[]{isbn});
+//        }
+//        else {
+//            return db.delete(TABLE_NAME_SHELVES, "ISBN = ?", new String[]{isbn});
+//        }
+        return db.delete(tableName, "ISBN = ?", new String[]{isbn});
     }
 
     public Integer deleteLabelData (String label) {

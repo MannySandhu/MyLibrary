@@ -28,7 +28,7 @@ public class MyShelvesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_shelves);
 
-        addShelfListener();
+        addShelfButtonListener();
         createShelfDataViews();
     }
 
@@ -121,7 +121,7 @@ public class MyShelvesActivity extends AppCompatActivity {
 
     }
 
-    private void addShelfListener(){
+    private void addShelfButtonListener(){
         // Alert builder
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
@@ -139,9 +139,14 @@ public class MyShelvesActivity extends AppCompatActivity {
                 builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        if(!input.getText().toString().equalsIgnoreCase("")){
+                        String table_name = input.getText().toString();
+
+                        if(!table_name.equalsIgnoreCase("")){
                             boolean isInserted = mydb.insertLabelData(
-                                    input.getText().toString(), "None");
+                                    table_name, "None");
+
+                            // create table
+                            mydb.createShelfTable(table_name);
 
                             if(isInserted == true){
                                 Toast.makeText(MyShelvesActivity.this, "Shelf created!", Toast.LENGTH_LONG).show();
@@ -179,6 +184,21 @@ public class MyShelvesActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
+
+//    public void CreateDynamicTables(String Table_Name, String Contact_ID, String Display_Name)
+//    {
+//
+//        mydb = getWritableDatabase();
+//        mydb.execSQL("DROP TABLE IF EXISTS " + Table_Name);
+//        String query = "CREATE TABLE " + Table_Name + "(" + CID + " TEXT PRIMARY KEY, " + DName + " TEXT);";
+//        mydb.execSQL(query);
+//        mydb = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put(CID, Contact_ID);
+//        cv.put(DName, Display_Name);
+//        mydb.insert(Table_Name, null, cv);
+//        mydb.close();
+//    }
 
 
 }

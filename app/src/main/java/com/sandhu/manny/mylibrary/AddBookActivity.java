@@ -95,7 +95,7 @@ public class AddBookActivity extends AppCompatActivity {
                     // add book to database
                     String[] genreAndPages = (genreTextView.getText().toString()).split(":");
 
-                    boolean isInserted = mydb.insertData(isbnEditText.getText().toString(),
+                    boolean isInserted = mydb.insertData("book_data", isbnEditText.getText().toString(),
                             titleTextView.getText().toString(),
                             authorTextView.getText().toString(),
                             genreAndPages[0],

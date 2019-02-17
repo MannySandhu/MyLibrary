@@ -33,7 +33,7 @@ public class MyLibraryActivity extends AppCompatActivity {
     // create views
     public void createDataViews() {
 
-        final Cursor resultSet = mydb.getAllData();
+        final Cursor resultSet = mydb.getAllData("book_data");
 
         if(resultSet.getCount() == 0){
             showMessage("Empty Library", "There are no books in your library.");
@@ -80,7 +80,7 @@ public class MyLibraryActivity extends AppCompatActivity {
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                mydb.deleteData(volume.getIsbn(), true);
+                                mydb.deleteData("book_data", volume.getIsbn(), true);
                                 mydb.close();
                                 dialog.dismiss();
                                 recreate();
