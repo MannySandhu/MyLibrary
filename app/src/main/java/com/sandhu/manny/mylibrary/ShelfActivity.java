@@ -141,6 +141,12 @@ public class ShelfActivity extends AppCompatActivity {
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if(i == 0){
+                            System.out.println("SEARCH");
+                        }
+                        else if(i == 1){
+                            System.out.println("LIBRARY");
+                        }
 
                     }
                 });
