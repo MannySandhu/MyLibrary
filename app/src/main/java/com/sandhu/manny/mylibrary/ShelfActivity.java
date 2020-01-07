@@ -129,6 +129,7 @@ public class ShelfActivity extends AppCompatActivity {
         // Alert builder
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
+        final CharSequence[] options = {"Book Search", "From Library"};
         input.setSingleLine(true);
 
         Button addBookButton = (Button)findViewById(R.id.addBookButton);
@@ -136,27 +137,14 @@ public class ShelfActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Alert dialogue
-                builder.setTitle("New Shelf");
-                builder.setMessage("Enter shelf name");
-                builder.setView(input);
+                builder.setTitle("Add Book to Shelf");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        if(!input.getText().toString().equalsIgnoreCase("")){
-                            boolean isInserted = mydb.insertLabelData(
-                                    input.getText().toString(), "None");
-
-                            if(isInserted == true){
-                                Toast.makeText(ShelfActivity.this, "Shelf created!", Toast.LENGTH_LONG).show();
-                            }else{
-                                Toast.makeText(ShelfActivity.this, "Shelf already exists", Toast.LENGTH_LONG).show();
-                            }
-                            dialog.dismiss();
-                            recreate();
-                        }
                     }
                 });
+
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 
                     @Override
