@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
-
+/*
+    db helper class
+ */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database

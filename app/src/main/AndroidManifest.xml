@@ -33,6 +33,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sandhu.manny.mylibrary.MainActivity" />
         </activity>
+        <activity
+            android:name=".AddBookFromShelfActivity"
+            android:parentActivityName=".ShelfActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sandhu.manny.mylibrary.MainActivity" />
+        </activity>
         <activity android:name=".MyShelvesActivity" />
         <activity
             android:name=".ShelfActivity"

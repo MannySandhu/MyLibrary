@@ -47,7 +47,8 @@ public class MyLibraryActivity extends AppCompatActivity {
                         resultSet.getString(2),
                         resultSet.getString(3),
                         resultSet.getString(4),
-                        resultSet.getString(5));
+                        resultSet.getString(5),
+                        "");
 
                 layoutParams = new RelativeLayout.LayoutParams
                         (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -107,6 +108,7 @@ public class MyLibraryActivity extends AppCompatActivity {
                 mLayout.addView(view, layoutParams);
 
             }
+            resultSet.close();
         }
     }
 

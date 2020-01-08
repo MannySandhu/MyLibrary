@@ -3,6 +3,9 @@ package com.sandhu.manny.mylibrary;
 import java.util.ArrayList;
 
 public class Shelf {
+/*
+    data class holds data about a shelf
+ */
 
     private ArrayList<Volume> shelf = new ArrayList<>();
 

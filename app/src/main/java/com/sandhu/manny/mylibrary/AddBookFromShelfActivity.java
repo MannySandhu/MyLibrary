@@ -1,5 +1,6 @@
 package com.sandhu.manny.mylibrary;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +20,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 /*
-    add books to the main library from main activity
+    Adds book to the shelf from shelf activity
  */
-public class AddBookActivity extends AppCompatActivity {
+public class AddBookFromShelfActivity extends AppCompatActivity {
 
     DatabaseHelper mydb;
 
@@ -54,7 +55,7 @@ public class AddBookActivity extends AppCompatActivity {
                 String isbnValue = isbnEditText.getText().toString(); // get the isbn on click
 
                 if(isbnValue.length() < 10) {
-                    Toast.makeText(AddBookActivity.this, "ISBN must be 10 or 13 digits", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBookFromShelfActivity.this, "ISBN must be 10 or 13 digits", Toast.LENGTH_LONG).show();
                 }else {
                     String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnValue;
 
@@ -92,11 +93,12 @@ public class AddBookActivity extends AppCompatActivity {
 
                 //if no book selected
                 if(titleTextView.getText().toString().equalsIgnoreCase("Title:")){
-                    Toast.makeText(AddBookActivity.this, "Select a book", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddBookFromShelfActivity.this, "Select a book", Toast.LENGTH_LONG).show();
                 }else {
                     // add book to database
                     String[] genreAndPages = (genreTextView.getText().toString()).split(":");
 
+                    // insert data to main library db table
                     boolean isInserted = mydb.insertData("book_data", isbnEditText.getText().toString(),
                             titleTextView.getText().toString(),
                             authorTextView.getText().toString(),
@@ -105,14 +107,14 @@ public class AddBookActivity extends AppCompatActivity {
                             publishedTextView.getText().toString());
 
                     if(isInserted == true){
-                        Toast.makeText(AddBookActivity.this, "Book added", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddBookFromShelfActivity.this, "Book added", Toast.LENGTH_LONG).show();
                         titleTextView.setText("");
                     }else{
                         if(titleTextView.getText().toString() == "null")
                         {
-                            Toast.makeText(AddBookActivity.this, "Enter a valid ISBN", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddBookFromShelfActivity.this, "Enter a valid ISBN", Toast.LENGTH_LONG).show();
                         }
-                        Toast.makeText(AddBookActivity.this, "Book already exists", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddBookFromShelfActivity.this, "Book already exists", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -128,7 +130,7 @@ public class AddBookActivity extends AppCompatActivity {
             String totalItems = response.optString("totalItems");
             if(totalItems.equalsIgnoreCase("0")) {
 
-                Toast.makeText(AddBookActivity.this, "Invalid ISBN", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddBookFromShelfActivity.this, "Invalid ISBN", Toast.LENGTH_LONG).show();
             }else{
 
                 JSONArray jsonArray = response.getJSONArray("items");

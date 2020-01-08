@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/*
+    add/create shelves to shelf list
+ */
 public class MyShelvesActivity extends AppCompatActivity {
 
     DatabaseHelper mydb = new DatabaseHelper(this);

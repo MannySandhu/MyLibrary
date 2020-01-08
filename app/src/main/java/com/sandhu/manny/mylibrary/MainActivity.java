@@ -5,15 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+/*
+    main activity
+ */
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Button addBookButton = (Button)findViewById(R.id.AddBookButton);
         Button myLibraryButton = (Button)findViewById(R.id.MyLibraryButton);
@@ -40,7 +40,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myListsIntent);
             }
         });
-
-
     }
 }

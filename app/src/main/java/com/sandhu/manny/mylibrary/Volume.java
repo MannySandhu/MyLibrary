@@ -2,10 +2,13 @@ package com.sandhu.manny.mylibrary;
 
 public class Volume {
 
-    private String isbn, title, author, genre, pages, published;
+    /*
+        data class holds data about a volume
+     */
+    private String isbn, title, author, genre, pages, published, shelfName;
 
     public Volume(String isbn, String title, String author,
-                  String genre, String pages, String published)
+                  String genre, String pages, String published, String shelfName)
     {
         this.isbn = isbn;
         this.title = title;
@@ -13,6 +16,7 @@ public class Volume {
         this.genre = genre;
         this.pages = pages;
         this.published = published;
+        this.shelfName = shelfName;
     }
 
     public String getIsbn() {
@@ -38,4 +42,6 @@ public class Volume {
     public String getPublished() {
         return published;
     }
+
+    public String getShelfName(){ return shelfName; }
 }
