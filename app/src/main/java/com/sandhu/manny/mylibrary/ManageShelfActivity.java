@@ -190,7 +190,7 @@ public class ManageShelfActivity extends AppCompatActivity {
                         volumeList.add(volumeData);
                     }
                     volumeData = "";
-                    resultSet.close();
+
 
                     //create checkable item list
                     list = new String[volumeList.size()];
@@ -218,8 +218,7 @@ public class ManageShelfActivity extends AppCompatActivity {
                             for(int i=0; i<count; ++i){
                                 if(state[i] == true){
                                     // Then assign shelf label
-                                    isUpdated = mydb.updateData(MASTER_TABLE, resultSet.getString(0),
-                                            null, null, null, null, null, label);
+                                    isUpdated = mydb.updateLabelData(MASTER_TABLE, resultSet.getString(0), label);
                                 }
                                 resultSet.moveToNext();
                             }

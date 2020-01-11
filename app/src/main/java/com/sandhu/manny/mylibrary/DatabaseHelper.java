@@ -119,19 +119,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // update the table
-    public boolean updateData(String tableName, String isbn,
-                              String title, String author,
-                              String genre, String pages,
-                              String published, String shelf){
+    public boolean updateLabelData(String tableName, String isbn, String shelf){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(BOOK_ISBN, isbn);
-        contentValues.put(BOOK_TITLE, title);
-        contentValues.put(BOOK_AUTHOR, author);
-        contentValues.put(BOOK_GENRE, genre);
-        contentValues.put(BOOK_PAGES, pages);
-        contentValues.put(PUBLICATION_DATE, published);
         contentValues.put(SHELF_NAME, shelf);
         db.update(TABLE_NAME, contentValues, "ISBN = ?", new String[] { isbn });
         return true;
