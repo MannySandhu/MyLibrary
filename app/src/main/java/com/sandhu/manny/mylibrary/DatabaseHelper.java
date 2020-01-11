@@ -32,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String BOOK_GENRE = "genre";
     public static final String BOOK_PAGES = "pages";
     public static final String PUBLICATION_DATE = "published";
+    public static final String SHELF_NAME = "shelf";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -42,9 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //this.db = db;
         db.execSQL("create table " + TABLE_NAME + "(ISBN TEXT PRIMARY KEY," +
-                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
+                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT, shelf TEXT DEFAULT 'Not in a Shelf')");
         db.execSQL("create table " + TABLE_NAME_LABELS + "(label TEXT PRIMARY KEY, information TEXT)");
     }
 
@@ -55,14 +55,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void createShelfTable(String table_name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS " + table_name);
-        db.execSQL("create table " + table_name + "(ISBN TEXT PRIMARY KEY," +
-                "title TEXT, author TEXT, genre TEXT, pages TEXT, published TEXT)");
-    }
-
-    public boolean insertData(String tableName, String isbn, String title, String author, String genre, String pages, String published){
+    public boolean insertData(String tableName, String isbn,
+                              String title, String author,
+                              String genre, String pages,
+                              String published){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(BOOK_ISBN, isbn);
@@ -120,6 +116,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //            return db.delete(TABLE_NAME_SHELVES, "ISBN = ?", new String[]{isbn});
 //        }
         return db.delete(tableName, "ISBN = ?", new String[]{isbn});
+    }
+
+    // update the table
+    public boolean updateData(String tableName, String isbn,
+                              String title, String author,
+                              String genre, String pages,
+                              String published, String shelf){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(BOOK_ISBN, isbn);
+        contentValues.put(BOOK_TITLE, title);
+        contentValues.put(BOOK_AUTHOR, author);
+        contentValues.put(BOOK_GENRE, genre);
+        contentValues.put(BOOK_PAGES, pages);
+        contentValues.put(PUBLICATION_DATE, published);
+        contentValues.put(SHELF_NAME, shelf);
+        db.update(TABLE_NAME, contentValues, "ISBN = ?", new String[] { isbn });
+        return true;
     }
 
     public Integer deleteLabelData (String label) {

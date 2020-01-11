@@ -20,7 +20,7 @@ import java.util.ArrayList;
 /*
     add/create shelves to shelf list
  */
-public class MyShelvesActivity extends AppCompatActivity {
+public class ManageShelvesActivity extends AppCompatActivity {
 
     DatabaseHelper mydb = new DatabaseHelper(this);
     private ArrayList<Shelf> shelfData = new ArrayList<>();
@@ -74,7 +74,7 @@ public class MyShelvesActivity extends AppCompatActivity {
 
                 // Alert builder
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                final Intent loadShelfIntent = new Intent(this, ShelfActivity.class);
+                final Intent loadShelfIntent = new Intent(this, ManageShelfActivity.class);
 
                 rl.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -141,19 +141,16 @@ public class MyShelvesActivity extends AppCompatActivity {
                 builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        String table_name = input.getText().toString();
+                        String shelf_name = input.getText().toString();
 
-                        if(!table_name.equalsIgnoreCase("")){
+                        if(!shelf_name.equalsIgnoreCase("")){
                             boolean isInserted = mydb.insertLabelData(
-                                    table_name, "None");
-
-                            // create table
-                            mydb.createShelfTable(table_name);
+                                    shelf_name, "None");
 
                             if(isInserted == true){
-                                Toast.makeText(MyShelvesActivity.this, "Shelf created!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ManageShelvesActivity.this, "Shelf created!", Toast.LENGTH_LONG).show();
                             }else{
-                                Toast.makeText(MyShelvesActivity.this, "Shelf already exists", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ManageShelvesActivity.this, "Shelf already exists", Toast.LENGTH_LONG).show();
                             }
                             dialog.dismiss();
                             recreate();

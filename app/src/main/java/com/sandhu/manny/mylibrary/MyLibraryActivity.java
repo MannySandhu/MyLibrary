@@ -1,23 +1,19 @@
 package com.sandhu.manny.mylibrary;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MyLibraryActivity extends AppCompatActivity {
 
     DatabaseHelper mydb = new DatabaseHelper(this);
+    private static final String MASTER_TABLE = "book_data";
+
     private RelativeLayout mLayout;
     private RelativeLayout.LayoutParams layoutParams;
 
@@ -26,14 +22,14 @@ public class MyLibraryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_library);
 
-        createDataViews();
+        createDataViews(MASTER_TABLE);
 
     }
 
     // create views
-    public void createDataViews() {
+    public void createDataViews(String tableName) {
 
-        final Cursor resultSet = mydb.getAllData("book_data");
+        final Cursor resultSet = mydb.getAllData(tableName);
 
         if(resultSet.getCount() == 0){
             showMessage("Empty Library", "There are no books in your library.");
@@ -48,7 +44,7 @@ public class MyLibraryActivity extends AppCompatActivity {
                         resultSet.getString(3),
                         resultSet.getString(4),
                         resultSet.getString(5),
-                        "");
+                        resultSet.getString(6));
 
                 layoutParams = new RelativeLayout.LayoutParams
                         (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -62,7 +58,8 @@ public class MyLibraryActivity extends AppCompatActivity {
                         + volume.getAuthor() + "\n"
                         + volume.getGenre() + "\n"
                         + volume.getPages() + "\n"
-                        + volume.getPublished() + "\n");
+                        + volume.getPublished() + "\n"
+                        + volume.getShelfLabel() + "\n");
                 view.setClickable(true);
 
                 // Alert builder
@@ -120,6 +117,5 @@ public class MyLibraryActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
-
 
 }

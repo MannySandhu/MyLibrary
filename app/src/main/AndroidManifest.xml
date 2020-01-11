@@ -35,14 +35,14 @@
         </activity>
         <activity
             android:name=".AddBookFromShelfActivity"
-            android:parentActivityName=".ShelfActivity">
+            android:parentActivityName=".ManageShelfActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sandhu.manny.mylibrary.MainActivity" />
         </activity>
-        <activity android:name=".MyShelvesActivity" />
+        <activity android:name=".ManageShelvesActivity" />
         <activity
-            android:name=".ShelfActivity"
+            android:name=".ManageShelfActivity"
             android:label="@string/title_activity_shelf"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
