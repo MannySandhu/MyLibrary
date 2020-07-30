@@ -1,7 +1,10 @@
 package com.sandhu.manny.mylibrary.model;
 
+import androidx.room.Entity;
+
 import java.util.ArrayList;
 
+@Entity(tableName = "label_data")
 public class Shelf {
 /*
     data class holds data about a shelf

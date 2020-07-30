@@ -1,13 +1,20 @@
 package com.sandhu.manny.mylibrary.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "book_data")
 public class Book {
 
     /*
         data class holds data about a volume
      */
-    private String isbn, title, author, genre, pages, published, shelfLabel;
+    @PrimaryKey
+    private int isbn;
 
-    public Book(String isbn, String title, String author,
+    private String title, author, genre, pages, published, shelfLabel;
+
+    public Book(int isbn, String title, String author,
                 String genre, String pages, String published, String shelfLabel)
     {
         this.isbn = isbn;
@@ -19,7 +26,7 @@ public class Book {
         this.shelfLabel = shelfLabel;
     }
 
-    public String getIsbn() {
+    public int getIsbn() {
         return isbn;
     }
 
