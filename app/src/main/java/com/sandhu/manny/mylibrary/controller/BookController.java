@@ -1,22 +1,12 @@
 package com.sandhu.manny.mylibrary.controller;
 
-import com.sandhu.manny.mylibrary.db.AppDatabase;
 import com.sandhu.manny.mylibrary.model.Book;
 import com.sandhu.manny.mylibrary.service.BookService;
 
-import javax.inject.Inject;
 
 public class BookController {
 
-    private BookService bookService;
-
-    BookController(BookService bookService){
-        this.bookService = bookService;
-    }
-
-    public void findBookByISBN(long isbn){
-        bookService.findBookByHttpRequest(isbn);
-    }
+    private BookService bookService = new BookService();
 
     public void insertBook(Book book){
         bookService.insertBook(book);
@@ -26,7 +16,11 @@ public class BookController {
         bookService.deleteBook(isbn);
     }
 
-    Book getBookByISBN(long isbn){
-        return null;
+    public Book getBookByISBN(long isbn){
+        return bookService.getBookByISBN(isbn);
+    }
+
+    public void findBookByISBN(long isbn){
+        bookService.findBookByHttpRequest(isbn);
     }
 }

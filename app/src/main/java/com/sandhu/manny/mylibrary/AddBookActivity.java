@@ -16,8 +16,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.sandhu.manny.mylibrary.controller.BookController;
 import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 import com.sandhu.manny.mylibrary.db.AppDatabase;
+import com.sandhu.manny.mylibrary.model.Book;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +30,7 @@ import org.json.JSONObject;
 public class AddBookActivity extends AppCompatActivity {
 
     DatabaseHelper mydb;
+    private static BookController bookController = new BookController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,9 @@ public class AddBookActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Book book = new Book(123, "","","","","","");
+                bookController.insertBook(book);
 
                 //if no book selected
                 if(titleTextView.getText().toString().equalsIgnoreCase("Title:")){
