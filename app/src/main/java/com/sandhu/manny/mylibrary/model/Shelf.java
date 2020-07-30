@@ -1,4 +1,6 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.model;
+
+import com.sandhu.manny.mylibrary.model.Volume;
 
 import java.util.ArrayList;
 

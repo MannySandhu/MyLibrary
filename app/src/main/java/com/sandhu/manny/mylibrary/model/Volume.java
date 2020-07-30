@@ -1,4 +1,4 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.model;
 
 public class Volume {
 

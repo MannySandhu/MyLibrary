@@ -16,6 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
+import com.sandhu.manny.mylibrary.model.Shelf;
+
 import java.util.ArrayList;
 /*
     add/create shelves to shelf list

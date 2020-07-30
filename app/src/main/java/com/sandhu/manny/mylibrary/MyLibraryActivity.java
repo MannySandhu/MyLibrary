@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
+import com.sandhu.manny.mylibrary.model.Volume;
+
 public class MyLibraryActivity extends AppCompatActivity {
 
     DatabaseHelper mydb = new DatabaseHelper(this);
