@@ -3,13 +3,18 @@ package com.sandhu.manny.mylibrary.dao;
 import com.sandhu.manny.mylibrary.model.Shelf;
 
 public class ShelfDataAccessService implements ShelfDao {
+
+    ShelfDataAccessService(){
+
+    }
+
     @Override
-    public int insertBook(String shelf, int ISBN) {
+    public int insertBook(String shelf, long ISBN) {
         return 1;
     }
 
     @Override
-    public int deleteBook(String shelf, int ISBN) {
+    public int deleteBook(String shelf, long ISBN) {
         return 1;
     }
 

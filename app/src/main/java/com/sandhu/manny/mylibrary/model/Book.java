@@ -1,17 +1,8 @@
 package com.sandhu.manny.mylibrary.model;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "book_data")
 public class Book {
 
-    /*
-        data class holds data about a volume
-     */
-    @PrimaryKey
     private int isbn;
-
     private String title, author, genre, pages, published, shelfLabel;
 
     public Book(int isbn, String title, String author,
