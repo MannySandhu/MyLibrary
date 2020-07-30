@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
-import com.sandhu.manny.mylibrary.model.Volume;
+import com.sandhu.manny.mylibrary.model.Book;
 
 public class MyLibraryActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class MyLibraryActivity extends AppCompatActivity {
             int id = 1;
             while(resultSet.moveToNext()){
 
-                final Volume volume = new Volume(resultSet.getString(0),
+                final Book book = new Book(resultSet.getString(0),
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
@@ -57,12 +57,12 @@ public class MyLibraryActivity extends AppCompatActivity {
                 view.setId(id++);
                 view.setLayoutParams(layoutParams);
                 view.setClickable(true);
-                view.setText(volume.getTitle() + "\n"
-                        + volume.getAuthor() + "\n"
-                        + volume.getGenre() + "\n"
-                        + volume.getPages() + "\n"
-                        + volume.getPublished() + "\n"
-                        + volume.getShelfLabel() + "\n");
+                view.setText(book.getTitle() + "\n"
+                        + book.getAuthor() + "\n"
+                        + book.getGenre() + "\n"
+                        + book.getPages() + "\n"
+                        + book.getPublished() + "\n"
+                        + book.getShelfLabel() + "\n");
                 view.setClickable(true);
 
                 // Alert builder
@@ -76,12 +76,12 @@ public class MyLibraryActivity extends AppCompatActivity {
 
                         // Alert dialogue
                         builder.setTitle("Delete Book?");
-                        builder.setMessage(volume.getTitle());
+                        builder.setMessage(book.getTitle());
 
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                mydb.deleteData("book_data", volume.getIsbn(), true);
+                                mydb.deleteData("book_data", book.getIsbn(), true);
                                 mydb.close();
                                 dialog.dismiss();
                                 recreate();

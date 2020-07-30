@@ -1,7 +1,5 @@
 package com.sandhu.manny.mylibrary.model;
 
-import com.sandhu.manny.mylibrary.model.Volume;
-
 import java.util.ArrayList;
 
 public class Shelf {
@@ -9,19 +7,19 @@ public class Shelf {
     data class holds data about a shelf
  */
 
-    private ArrayList<Volume> shelf = new ArrayList<>();
+    private ArrayList<Book> shelf = new ArrayList<>();
 
-    public Shelf(ArrayList<Volume> shelf){
+    public Shelf(ArrayList<Book> shelf){
         shelf = this.shelf;
     }
 
-    public ArrayList<Volume> getShelf() {
+    public ArrayList<Book> getShelf() {
 
         return shelf;
     }
 
-    public Volume getVolumeByIsbn(String isbn){
-        for(Volume v : shelf){
+    public Book getVolumeByIsbn(String isbn){
+        for(Book v : shelf){
             if(v.getIsbn() == isbn)
                 return v;
         }

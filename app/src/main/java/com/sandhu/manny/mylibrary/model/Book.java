@@ -1,14 +1,14 @@
 package com.sandhu.manny.mylibrary.model;
 
-public class Volume {
+public class Book {
 
     /*
         data class holds data about a volume
      */
     private String isbn, title, author, genre, pages, published, shelfLabel;
 
-    public Volume(String isbn, String title, String author,
-                  String genre, String pages, String published, String shelfLabel)
+    public Book(String isbn, String title, String author,
+                String genre, String pages, String published, String shelfLabel)
     {
         this.isbn = isbn;
         this.title = title;
