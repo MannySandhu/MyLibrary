@@ -17,55 +17,16 @@ import java.util.concurrent.Executors;
 @androidx.room.Database(entities = {Book.class, Shelf.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    BookDao bookDao = new BookDao() {
-        @Override
-        public int insertBook(Book book) {
-            return 0;
-        }
+    private static AppDatabase INSTANCE;
 
-        @Override
-        public int deleteBook(long ISBN) {
-            return 0;
-        }
+    public abstract BookDao bookDao();
+    public abstract ShelfDao shelfDao();
 
-        @Override
-        public Book retrieveBookByISBN(long ISBN) {
-            return null;
-        }
-    };
-
-    ShelfDao shelfDao = new ShelfDao() {
-        @Override
-        public int insertBook(String shelf, long ISBN) {
-            return 0;
-        }
-
-        @Override
-        public int deleteBook(String shelf, long ISBN) {
-            return 0;
-        }
-
-        @Override
-        public Shelf retrieveShelf(String shelf) {
-            return null;
-        }
-    };
-
-
-    private static volatile AppDatabase INSTANCE;
-    private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
-    public static AppDatabase getDatabase(final Context context) {
+    final public static synchronized AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppDatabase.class, "my_library_database")
-                            .build();
-                }
-            }
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "my_library_db")
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
         return INSTANCE;
     }
