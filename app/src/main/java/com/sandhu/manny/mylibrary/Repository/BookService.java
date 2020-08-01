@@ -12,7 +12,7 @@ public class BookService implements FetchBookResource {
     private BookDataAccessService bookDataAccessService;
 
     public BookService(Context appContext){
-        
+
     }
 
     public int insertBook(Book book){

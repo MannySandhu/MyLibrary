@@ -3,8 +3,11 @@ package com.sandhu.manny.mylibrary.dao;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 
 import com.sandhu.manny.mylibrary.model.Book;
+
+import java.util.List;
 
 @Dao
 public interface BookDao {
@@ -13,8 +16,11 @@ public interface BookDao {
     int insertBook(Book book);
 
     @Delete
-    int deleteBook(long ISBN);
+    int deleteBook(long isbn);
 
+    @Query("SELECT * FROM book_table ORDER BY title DESC")
+    List<Book> getAllBooks();
 
-    Book retrieveBookByISBN(long ISBN);
+    @Query("SELECT isbn, title, author, genre, pages, published, shelfLabel FROM book_table WHERE isbn = :isbn")
+    Book getBookByISBN(long isbn);
 }

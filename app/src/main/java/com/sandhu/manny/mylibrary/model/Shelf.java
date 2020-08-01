@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 
-@Entity
+@Entity(tableName = "shelf_table")
 public class Shelf {
 
     @PrimaryKey

@@ -15,55 +15,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="699308a2-6f8e-4aad-9565-553ff5c3da85" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/AddBookActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/AddBookActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/AddBookFromShelfActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/AddBookFromShelfActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/ManageShelfActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/ManageShelfActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/ManageShelvesActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/ManageShelvesActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/MyLibraryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/MyLibraryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/FindBookResourceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/FetchBookResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/controller/BookController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/controller/LibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/LibraryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/controller/ShelfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/ShelfController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/controller/ShelvesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/ShelvesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/BookService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/BookDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/BookDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/BookDataAccessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/ShelfDataAccessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/ShelfDataAccessService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/db/AppDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/db/AppDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/db/LibraryTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/db/ShelfTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/db/ShelvesTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/ShelfDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/dao/ShelfDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/model/Shelf.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/model/Shelf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/service/LibraryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/LibraryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/service/ShelfService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/ShelfService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/service/ShelvesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/Repository/ShelvesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_book.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_shelves.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_shelves.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_shelf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_shelf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_my_library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_my_library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_shelf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_shelf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_my_library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_my_library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_shelf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_shelf.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
