@@ -1,4 +1,4 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sandhu.manny.mylibrary.R;
 import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 
 import java.util.ArrayList;

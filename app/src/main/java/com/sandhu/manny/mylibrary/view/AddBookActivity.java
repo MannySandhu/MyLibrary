@@ -1,5 +1,6 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.view;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,16 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.room.Room;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.sandhu.manny.mylibrary.controller.BookController;
-import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
+import com.sandhu.manny.mylibrary.R;
+import com.sandhu.manny.mylibrary._viewmodel.BookController;
 import com.sandhu.manny.mylibrary.db.AppDatabase;
 import com.sandhu.manny.mylibrary.model.Book;
 
@@ -29,16 +28,18 @@ import org.json.JSONObject;
  */
 public class AddBookActivity extends AppCompatActivity {
 
-    DatabaseHelper mydb;
-    private static BookController bookController = new BookController();
+    private static AppDatabase db;
+    private static Context appContext;
+    private static BookController bookController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        //create database
-        mydb = new DatabaseHelper(this);
+        db = AppDatabase.getDatabase(getApplicationContext());
+        appContext = getApplicationContext();
+        bookController = new BookController(appContext);
 
         // wire up widgets
         Button addButton = (Button) findViewById(R.id.addButton);
@@ -107,14 +108,16 @@ public class AddBookActivity extends AppCompatActivity {
                     // add book to database
                     String[] genreAndPages = (genreTextView.getText().toString()).split(":");
 
-                    boolean isInserted = mydb.insertData("book_data", isbnEditText.getText().toString(),
-                            titleTextView.getText().toString(),
-                            authorTextView.getText().toString(),
-                            genreAndPages[0],
-                            genreAndPages[1],
-                            publishedTextView.getText().toString());
+                    int isInserted = bookController.insertBook(
+                            new Book(Long.parseLong(isbnEditText.getText().toString()),
+                                        titleTextView.getText().toString(),
+                                        authorTextView.getText().toString(),
+                                        genreAndPages[0],
+                                        genreAndPages[1],
+                                        publishedTextView.getText().toString(), "none")
+                    );
 
-                    if(isInserted == true){
+                    if(isInserted == 1){
                         Toast.makeText(AddBookActivity.this, "Book added", Toast.LENGTH_LONG).show();
                         titleTextView.setText("");
                     }else{

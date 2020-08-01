@@ -1,4 +1,4 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.sandhu.manny.mylibrary.R;
 import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 
 import org.json.JSONArray;

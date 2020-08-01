@@ -2,7 +2,7 @@ package com.sandhu.manny.mylibrary.dao;
 
 import com.sandhu.manny.mylibrary.model.Book;
 
-public class BookDataAccessService implements BookDao {
+public abstract class BookDataAccessService implements BookDao {
 
     @Override
     public int insertBook(Book book) {

@@ -2,8 +2,8 @@ package com.sandhu.manny.mylibrary.api;
 
 import com.sandhu.manny.mylibrary.model.Book;
 
-public interface FindBookResourceService {
+public interface FetchBookResource {
 
-    Book findBookByHttpRequest(long isbn);
+    Book fetchBookHttpRequest(long isbn);
 
 }

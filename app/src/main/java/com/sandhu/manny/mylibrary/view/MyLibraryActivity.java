@@ -1,4 +1,4 @@
-package com.sandhu.manny.mylibrary;
+package com.sandhu.manny.mylibrary.view;
 
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.sandhu.manny.mylibrary.R;
 import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 import com.sandhu.manny.mylibrary.model.Book;
 
@@ -41,7 +42,7 @@ public class MyLibraryActivity extends AppCompatActivity {
             int id = 1;
             while(resultSet.moveToNext()){
 
-                final Book book = new Book(resultSet.getString(0),
+                final Book book = new Book(Long.parseLong(resultSet.getString(0)),
                         resultSet.getString(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
@@ -81,8 +82,8 @@ public class MyLibraryActivity extends AppCompatActivity {
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                mydb.deleteData("book_data", book.getIsbn(), true);
-                                mydb.close();
+                                //mydb.deleteData("book_data", book.getIsbn(), true);
+                                //mydb.close();
                                 dialog.dismiss();
                                 recreate();
                             }

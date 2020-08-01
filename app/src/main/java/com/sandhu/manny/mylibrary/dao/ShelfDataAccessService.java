@@ -4,10 +4,6 @@ import com.sandhu.manny.mylibrary.model.Shelf;
 
 public class ShelfDataAccessService implements ShelfDao {
 
-    ShelfDataAccessService(){
-
-    }
-
     @Override
     public int insertBook(String shelf, long ISBN) {
         return 1;
