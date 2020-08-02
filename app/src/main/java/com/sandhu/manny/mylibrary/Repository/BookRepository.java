@@ -22,15 +22,15 @@ public class BookRepository implements FetchBookResource {
         allBooks = bookDao.getAllBooks();
     }
 
-    public void insertBook(){
+    public void insertBook(Book book){
 
     }
 
-    public void deleteBook(){
+    public void deleteBook(long isbn){
 
     }
 
-    public void getBookByIsbn(){
+    public void getBookByIsbn(long isbn){
 
     }
 

@@ -1,5 +1,6 @@
 package com.sandhu.manny.mylibrary.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -30,6 +31,6 @@ public interface ShelfDao {
     List<Shelf> getShelf(String shelfLabel);
 
     @Query("SELECT * FROM shelf_table ORDER BY shelfLabel DESC")
-    List<Shelf> getAllShelves(String shelfLabel);
+    LiveData<List<Shelf>> getAllShelves();
 
 }
