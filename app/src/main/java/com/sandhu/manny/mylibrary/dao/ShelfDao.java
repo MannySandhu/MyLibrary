@@ -18,7 +18,7 @@ public interface ShelfDao {
     int insertShelf(String shelfLabel);
 
     @Insert
-    int insertBookIntoShelf(String shelfLabel, Book book);
+    int insertBookIntoShelf(Book book, String shelfLabel);
 
     @Delete
     int deleteShelf(String shelfLabel);
@@ -28,5 +28,8 @@ public interface ShelfDao {
 
     @Query("SELECT shelf FROM shelf_table WHERE shelfLabel = :shelfLabel")
     List<Shelf> getShelf(String shelfLabel);
+
+    @Query("SELECT * FROM shelf_table ORDER BY shelfLabel DESC")
+    List<Shelf> getAllShelves(String shelfLabel);
 
 }

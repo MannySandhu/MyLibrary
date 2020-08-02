@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 import com.sandhu.manny.mylibrary.model.Book;
 
 public class MyLibraryActivity extends AppCompatActivity {

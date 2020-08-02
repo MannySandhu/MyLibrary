@@ -10,9 +10,6 @@ import com.sandhu.manny.mylibrary.dao.ShelfDao;
 import com.sandhu.manny.mylibrary.model.Book;
 import com.sandhu.manny.mylibrary.model.Shelf;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 
 @androidx.room.Database(entities = {Book.class, Shelf.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
@@ -30,6 +27,5 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
-
 
 }

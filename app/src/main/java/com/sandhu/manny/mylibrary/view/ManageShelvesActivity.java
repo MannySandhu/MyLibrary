@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary.dao.DatabaseHelper;
 import com.sandhu.manny.mylibrary.model.Shelf;
 
 import java.util.ArrayList;

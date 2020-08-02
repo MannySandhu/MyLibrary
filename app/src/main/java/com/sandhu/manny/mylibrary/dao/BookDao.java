@@ -1,5 +1,6 @@
 package com.sandhu.manny.mylibrary.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,7 +20,7 @@ public interface BookDao {
     int deleteBook(long isbn);
 
     @Query("SELECT * FROM book_table ORDER BY title DESC")
-    List<Book> getAllBooks();
+    LiveData<List<Book>> getAllBooks();
 
     @Query("SELECT isbn, title, author, genre, pages, published, shelfLabel FROM book_table WHERE isbn = :isbn")
     Book getBookByISBN(long isbn);
