@@ -28,7 +28,7 @@ public interface ShelfDao {
     int updateShelf(String shelfLabel);
 
     @Query("SELECT shelf FROM shelf_table WHERE shelfLabel = :shelfLabel")
-    List<Shelf> getShelf(String shelfLabel);
+    Shelf getShelfByLabel(String shelfLabel);
 
     @Query("SELECT * FROM shelf_table ORDER BY shelfLabel DESC")
     LiveData<List<Shelf>> getAllShelves();

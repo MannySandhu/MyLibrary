@@ -4,17 +4,16 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.sandhu.manny.mylibrary.api.FetchBookResource;
+import com.sandhu.manny.mylibrary.api.FetchBookResourceService;
 import com.sandhu.manny.mylibrary.dao.BookDao;
 import com.sandhu.manny.mylibrary.db.AppDatabase;
 import com.sandhu.manny.mylibrary.model.Book;
 
 import java.util.List;
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class BookRepository implements FetchBookResource {
+public class BookRepository implements FetchBookResourceService {
 
     private BookDao bookDao;
     private LiveData<List<Book>> allBooks;
@@ -39,8 +38,7 @@ public class BookRepository implements FetchBookResource {
 
     public Book getBookByIsbn(long isbn) throws InterruptedException {
         BlockingQueue<Book> bookResult = new LinkedBlockingQueue<>();
-        GetBookAsync getBookAsync =
-                new GetBookAsync(isbn, bookResult);
+        GetBookAsync getBookAsync = new GetBookAsync(bookDao, isbn, bookResult);
         getBookAsync.run();
         return bookResult.take();
     }
@@ -55,7 +53,9 @@ public class BookRepository implements FetchBookResource {
     }
 
 
-    // Inner classes for async db transactions running on a background thread
+    /*
+        Inner classes for async db transactions running on a background thread
+    */
     // Insert a book
     private static class InsertBookAsync implements Runnable {
 
@@ -97,7 +97,7 @@ public class BookRepository implements FetchBookResource {
         private long isbn;
         private BlockingQueue<Book> bookResult;
 
-        private GetBookAsync(long isbn, BlockingQueue<Book> bookResult) {
+        private GetBookAsync(BookDao bookDao, long isbn, BlockingQueue<Book> bookResult) {
             this.bookDao = bookDao;
             this.isbn = isbn;
             this.bookResult = bookResult;
