@@ -23,5 +23,5 @@ public interface BookDao {
     LiveData<List<Book>> getAllBooks();
 
     @Query("SELECT isbn, title, author, genre, pages, published, shelfLabel FROM book_table WHERE isbn = :isbn")
-    Book getBookByISBN(long isbn);
+    Book getBookByIsbn(long isbn);
 }
