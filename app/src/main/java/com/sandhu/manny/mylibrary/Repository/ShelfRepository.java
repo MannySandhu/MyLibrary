@@ -32,4 +32,8 @@ public class ShelfRepository {
     public Shelf getShelfByLabel(String shelfLabel) {
         return null;
     }
+
+    public LiveData<List<Shelf>> getAllShelves() {
+        return allShelves;
+    }
 }

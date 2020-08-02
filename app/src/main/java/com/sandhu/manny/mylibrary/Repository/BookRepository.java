@@ -38,4 +38,8 @@ public class BookRepository implements FetchBookResource {
     public Book fetchBookHttpRequest(long isbn) {
         return null;
     }
+
+    public LiveData<List<Book>> getAllBooks() {
+        return allBooks;
+    }
 }
