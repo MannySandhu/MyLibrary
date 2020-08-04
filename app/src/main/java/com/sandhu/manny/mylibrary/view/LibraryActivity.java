@@ -1,22 +1,14 @@
 package com.sandhu.manny.mylibrary.view;
 
-import android.content.DialogInterface;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.lifecycle.LifecycleOwner;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary._viewmodel.LibraryViewModel;
+import com.sandhu.manny.mylibrary._viewmodel.LibraryViewModelFactory;
 import com.sandhu.manny.mylibrary.model.Book;
 
 import java.util.List;
@@ -25,15 +17,17 @@ public class LibraryActivity extends AppCompatActivity {
 
 //    private RelativeLayout mLayout;
 //    private RelativeLayout.LayoutParams layoutParams;
-    private LibraryViewModel libraryViewModel;
+    private LibraryViewModelFactory libraryViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_library);
+        setContentView(R.layout.activity_library);
 
-        libraryViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(LibraryViewModel.class);
-        libraryViewModel.getAllBooks().observe((LifecycleOwner) this, new Observer<List<Book>>() {
+        libraryViewModel = new ViewModelProvider(this, new LibraryViewModelFactory(this.getApplication()))
+                .get(LibraryViewModelFactory.class);
+
+        libraryViewModel.getAllBooks().observe(this, new Observer<List<Book>>() {
             @Override
             public void onChanged(List<Book> books) {
                 Toast.makeText(LibraryActivity.this, "MVVM!", Toast.LENGTH_SHORT).show();
@@ -127,12 +121,12 @@ public class LibraryActivity extends AppCompatActivity {
 //    }
 
 
-    private void showMessage(String title, String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
+//    private void showMessage(String title, String message){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setCancelable(true);
+//        builder.setTitle(title);
+//        builder.setMessage(message);
+//        builder.show();
+//    }
 
 }

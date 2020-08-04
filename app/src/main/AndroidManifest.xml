@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MyLibraryActivity"
+            android:name=".view.LibraryActivity"
             android:label="@string/title_activity_my_library"
             android:parentActivityName=".view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -26,25 +26,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sandhu.manny.mylibrary.view.MainActivity" />
         </activity>
-        <activity
-            android:name=".view.AddBookActivity"
-            android:parentActivityName=".view.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />
-        </activity>
-        <activity
-            android:name=".view.AddBookFromShelfActivity"
-            android:parentActivityName=".view.ManageShelfActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />
-        </activity>
-        <activity android:name=".view.ManageShelvesActivity" />
-        <activity
-            android:name=".view.ManageShelfActivity"
-            android:label="@string/title_activity_shelf"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+<!--        <activity-->
+<!--            android:name=".view.AddBookActivity"-->
+<!--            android:parentActivityName=".view.MainActivity">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.PARENT_ACTIVITY"-->
+<!--                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />-->
+<!--        </activity>-->
+<!--        <activity-->
+<!--            android:name=".view.AddBookFromShelfActivity"-->
+<!--            android:parentActivityName=".view.ManageShelfActivity">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.PARENT_ACTIVITY"-->
+<!--                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />-->
+<!--        </activity>-->
+<!--        <activity android:name=".view.ManageShelvesActivity" />-->
+<!--        <activity-->
+<!--            android:name=".view.ManageShelfActivity"-->
+<!--            android:label="@string/title_activity_shelf"-->
+<!--            android:theme="@style/AppTheme.NoActionBar"></activity>-->
     </application>
 
 </manifest>
