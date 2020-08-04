@@ -22,25 +22,28 @@ public class MainActivity extends AppCompatActivity {
         Button myLibraryButton = (Button)findViewById(R.id.MyLibraryButton);
         Button myReadingListsButton = (Button)findViewById(R.id.ReadingListsButton);
 
-        final Intent addBookIntent = new Intent(this, AddBookActivity.class);
-        final Intent myLibraryIntent = new Intent(this, MyLibraryActivity.class);
-        final Intent myListsIntent = new Intent(this, ManageShelvesActivity.class);
+//        final Intent addBookIntent = new Intent(this, AddBookActivity.class);
+        final Intent myLibraryIntent = new Intent(this, LibraryActivity.class);
+//        final Intent myShelvesIntent = new Intent(this, ManageShelvesActivity.class);
 
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(addBookIntent);
+                //startActivity(addBookIntent);
             }
         });
+
         myLibraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { startActivity(myLibraryIntent);
+            public void onClick(View v) {
+                startActivity(myLibraryIntent);
             }
         });
+
         myReadingListsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(myListsIntent);
+                //startActivity(myShelvesIntent);
             }
         });
     }

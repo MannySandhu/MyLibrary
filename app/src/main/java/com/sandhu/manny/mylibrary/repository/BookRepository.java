@@ -1,4 +1,4 @@
-package com.sandhu.manny.mylibrary.Repository;
+package com.sandhu.manny.mylibrary.repository;
 
 import android.app.Application;
 
@@ -8,6 +8,7 @@ import com.sandhu.manny.mylibrary.api.FetchBookResourceService;
 import com.sandhu.manny.mylibrary.dao.BookDao;
 import com.sandhu.manny.mylibrary.db.AppDatabase;
 import com.sandhu.manny.mylibrary.model.Book;
+import com.sandhu.manny.mylibrary.model.Isbn;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -30,7 +31,7 @@ public class BookRepository implements FetchBookResourceService {
         insertBookAsync.run();
     }
 
-    public void deleteBook(long isbn){
+    public void deleteBook(Isbn isbn){
         DeleteBookAsync deleteBookAsync =
                 new DeleteBookAsync(bookDao, isbn);
         deleteBookAsync.run();
@@ -77,9 +78,9 @@ public class BookRepository implements FetchBookResourceService {
     private static class DeleteBookAsync implements Runnable {
 
         private BookDao bookDao;
-        private long isbn;
+        private Isbn isbn;
 
-        private DeleteBookAsync(BookDao bookDao, long isbn) {
+        private DeleteBookAsync(BookDao bookDao, Isbn isbn) {
             this.bookDao = bookDao;
             this.isbn = isbn;
         }

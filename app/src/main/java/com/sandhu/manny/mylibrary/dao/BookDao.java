@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.sandhu.manny.mylibrary.model.Book;
+import com.sandhu.manny.mylibrary.model.Isbn;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
 public interface BookDao {
 
     @Insert
-    int insertBook(Book book);
+    void insertBook(Book book);
 
     @Delete
-    int deleteBook(long isbn);
+    void deleteBook(Isbn isbn);
 
     @Query("SELECT * FROM book_table ORDER BY title DESC")
     LiveData<List<Book>> getAllBooks();
