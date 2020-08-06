@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sandhu.manny.mylibrary.AddBookActivity">
+    tools:context="com.sandhu.manny.mylibrary.view.AddBookActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -23,7 +23,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal" />
 
     <EditText
         android:id="@+id/isbnEditText"
@@ -39,6 +40,7 @@
         android:inputType="number"
         android:maxLength="13"
         android:textSize="30sp"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -123,10 +125,25 @@
         android:layout_marginRight="8dp"
         android:text="Genre:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/publishedTextView"
+        app:layout_constraintBottom_toTopOf="@+id/pagesTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Genre:" />
+
+    <TextView
+        android:id="@+id/pagesTextView"
+        android:layout_width="316dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Genre:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/publishedTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Pages:" />
 
     <TextView
         android:id="@+id/publishedTextView"
