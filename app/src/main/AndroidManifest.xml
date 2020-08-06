@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +27,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sandhu.manny.mylibrary.view.MainActivity" />
         </activity>
-<!--        <activity-->
-<!--            android:name=".view.AddBookActivity"-->
-<!--            android:parentActivityName=".view.MainActivity">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.PARENT_ACTIVITY"-->
-<!--                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />-->
-<!--        </activity>-->
+        <activity
+            android:name=".view.AddBookActivity"
+            android:parentActivityName=".view.LibraryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sandhu.manny.mylibrary.view.MainActivity" />
+        </activity>
 <!--        <activity-->
 <!--            android:name=".view.AddBookFromShelfActivity"-->
 <!--            android:parentActivityName=".view.ManageShelfActivity">-->

@@ -1,14 +1,18 @@
 package com.sandhu.manny.mylibrary.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sandhu.manny.mylibrary.R;
 import com.sandhu.manny.mylibrary._viewmodel.LibraryViewModel;
 import com.sandhu.manny.mylibrary.adapter.BookAdapter;
@@ -18,6 +22,7 @@ import java.util.List;
 
 public class LibraryActivity extends AppCompatActivity {
 
+    public static final int ADD_NOTE_REQUEST = 1;
 //    private RelativeLayout mLayout;
 //    private RelativeLayout.LayoutParams layoutParams;
     private LibraryViewModel libraryViewModel;
@@ -26,6 +31,15 @@ public class LibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
+
+        FloatingActionButton buttonAddBook = findViewById(R.id.button_add_book);
+        buttonAddBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LibraryActivity.this, AddBookActivity.class);
+                startActivityForResult(intent, ADD_NOTE_REQUEST);
+            }
+        });
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -43,8 +57,29 @@ public class LibraryActivity extends AppCompatActivity {
                 bookAdapter.setBooks(books);
             }
         });
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK){
+            String isbn = data.getStringExtra(AddBookActivity.EXTRA_ISBN);
+            String title = data.getStringExtra(AddBookActivity.EXTRA_TITLE);
+            String author = data.getStringExtra(AddBookActivity.EXTRA_AUTHOR);
+            String genre = data.getStringExtra(AddBookActivity.EXTRA_GENRE);
+            String pages = data.getStringExtra(AddBookActivity.EXTRA_PAGES);
+            String published = data.getStringExtra(AddBookActivity.EXTRA_PUBLISHED);
+
+            Book book = new Book(Long.parseLong(isbn), title, author,
+                    genre, pages, published, "none");
+
+            libraryViewModel.insertBook(book);
+
+            Toast.makeText(this, "Book saved", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Book not saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // create views

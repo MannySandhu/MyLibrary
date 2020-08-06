@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button myLibraryButton = (Button)findViewById(R.id.MyLibraryButton);
         Button myReadingListsButton = (Button)findViewById(R.id.ReadingListsButton);
 
-//        final Intent addBookIntent = new Intent(this, AddBookActivity.class);
+        final Intent addBookIntent = new Intent(this, AddBookActivity.class);
         final Intent myLibraryIntent = new Intent(this, LibraryActivity.class);
 //        final Intent myShelvesIntent = new Intent(this, ManageShelvesActivity.class);
 

@@ -17,11 +17,10 @@ import java.util.List;
 
 public class LibraryViewModel extends AndroidViewModel implements ViewModelProvider.Factory {
     private Application application;
-
     private BookRepository bookRepository;
     private LiveData<List<Book>> allBooks;
 
-    public LibraryViewModel(Application application) {
+    public LibraryViewModel(@NonNull Application application) {
         super(application);
 
         this.application = application;

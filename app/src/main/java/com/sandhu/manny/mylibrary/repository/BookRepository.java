@@ -28,7 +28,7 @@ public class BookRepository implements FetchBookResourceService {
     public void insertBook(Book book){
         InsertBookAsync insertBookAsync =
                 new InsertBookAsync(bookDao, book);
-        insertBookAsync.run();
+        new Thread(insertBookAsync).start();
     }
 
     public void deleteBook(Isbn isbn){

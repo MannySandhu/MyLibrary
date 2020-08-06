@@ -15,14 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
-
     private List<Book> books = new ArrayList<>();
 
     @NonNull
     @Override
     public BookHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_library, parent, false);
+                .inflate(R.layout.book_item, parent, false);
         return new BookHolder(itemView);
     }
 
@@ -41,7 +40,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         return books.size();
     }
 
-    public void setBooks(List<Book> books){
+    public void setBooks(List<Book> books) {
         this.books = books;
         notifyDataSetChanged();
     }
@@ -53,7 +52,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookHolder> {
         private TextView pages;
         private TextView published;
 
-        public BookHolder(@NonNull View itemView) {
+        public BookHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.text_view_title);
             author = itemView.findViewById(R.id.text_view_author);
