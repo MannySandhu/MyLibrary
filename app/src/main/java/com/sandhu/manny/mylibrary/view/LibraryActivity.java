@@ -6,9 +6,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary._viewmodel.LibraryViewModelFactory;
+import com.sandhu.manny.mylibrary._viewmodel.LibraryViewModel;
+import com.sandhu.manny.mylibrary.adapter.BookAdapter;
 import com.sandhu.manny.mylibrary.model.Book;
 
 import java.util.List;
@@ -17,20 +20,27 @@ public class LibraryActivity extends AppCompatActivity {
 
 //    private RelativeLayout mLayout;
 //    private RelativeLayout.LayoutParams layoutParams;
-    private LibraryViewModelFactory libraryViewModel;
+    private LibraryViewModel libraryViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
 
-        libraryViewModel = new ViewModelProvider(this, new LibraryViewModelFactory(this.getApplication()))
-                .get(LibraryViewModelFactory.class);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final BookAdapter bookAdapter = new BookAdapter();
+        recyclerView.setAdapter(bookAdapter);
+
+        libraryViewModel = new ViewModelProvider(this, new LibraryViewModel(this.getApplication()))
+                .get(LibraryViewModel.class);
 
         libraryViewModel.getAllBooks().observe(this, new Observer<List<Book>>() {
             @Override
             public void onChanged(List<Book> books) {
-                Toast.makeText(LibraryActivity.this, "MVVM!", Toast.LENGTH_SHORT).show();
+                bookAdapter.setBooks(books);
             }
         });
 

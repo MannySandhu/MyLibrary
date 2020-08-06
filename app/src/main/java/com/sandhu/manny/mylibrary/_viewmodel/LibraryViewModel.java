@@ -15,13 +15,13 @@ import com.sandhu.manny.mylibrary.repository.BookRepository;
 
 import java.util.List;
 
-public class LibraryViewModelFactory extends AndroidViewModel implements ViewModelProvider.Factory {
+public class LibraryViewModel extends AndroidViewModel implements ViewModelProvider.Factory {
     private Application application;
 
     private BookRepository bookRepository;
     private LiveData<List<Book>> allBooks;
 
-    public LibraryViewModelFactory(Application application) {
+    public LibraryViewModel(Application application) {
         super(application);
 
         this.application = application;
@@ -32,7 +32,7 @@ public class LibraryViewModelFactory extends AndroidViewModel implements ViewMod
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        return (T) new LibraryViewModelFactory(application);
+        return (T) new LibraryViewModel(application);
     }
 
     public void insertBook(Book book){

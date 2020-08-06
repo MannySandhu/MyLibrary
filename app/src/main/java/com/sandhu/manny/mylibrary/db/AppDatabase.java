@@ -21,6 +21,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //    public abstract ShelfDao shelfDao();
 
     final public static synchronized AppDatabase getDatabase(Context context) {
+
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "my_library_db")
                     .fallbackToDestructiveMigration()
@@ -28,5 +29,4 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
-
 }
