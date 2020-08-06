@@ -66,7 +66,8 @@ public class AddBookActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setTitle("Add Book");
 
-        // stevejobsbook = "9781451648546";
+        // steve jobs bio - 9781451648546
+        // cracking the coding - 0984782850
         requestQueue = Volley.newRequestQueue(this);
 
         findButton.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +113,7 @@ public class AddBookActivity extends AppCompatActivity {
         String author = authorTextView.getText().toString();
         String genre = genreTextView.getText().toString();
         String pages = pagesTextView.getText().toString();
-        String published = isbnEditText.getText().toString();
+        String published = publishedTextView.getText().toString();
 
 //        String title = "some title";
 //        String genre = "some genre";

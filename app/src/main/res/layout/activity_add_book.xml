@@ -40,7 +40,7 @@
         android:inputType="number"
         android:maxLength="13"
         android:textSize="30sp"
-        android:text="9781451648546"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
