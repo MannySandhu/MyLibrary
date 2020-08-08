@@ -15,38 +15,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="699308a2-6f8e-4aad-9565-553ff5c3da85" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_14_9_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_17_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_9_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_9_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/GetBookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/Authors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/BookResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/ImageLinks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/Items.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/VolumeInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/MyLibrary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/MyLibrary.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/AuthorsPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/CategoriesPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/ImageLinksPojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/ItemsPojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/LibraryViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/_viewmodel/LibraryViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/FetchBookResourceService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/GetBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/GetBookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/Authors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/BookResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/BookResourcePojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/ImageLinks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/Items.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojos/VolumeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/api/pojo/BookInfoPojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/AddBookActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/sandhu/manny/mylibrary/view/AddBookActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_book.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_book.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,10 +252,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596475669309" />
-    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1596885920918">
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1596893408337">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596885920918" />
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596893408337" />
     <state x="808" y="409" width="525" height="403" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1596111907327">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -287,10 +268,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="745" y="379" width="433" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1596303936445" />
-    <state x="480" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596578077997">
+    <state x="480" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596892967244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="480" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596578077997" />
+    <state x="480" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596892967244" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596814521753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -311,22 +292,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596476764110" />
-    <state width="1863" height="302" key="GridCell.Tab.0.bottom" timestamp="1596888881499">
+    <state width="1863" height="155" key="GridCell.Tab.0.bottom" timestamp="1596889063964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1863" height="302" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596888881499" />
-    <state width="1863" height="302" key="GridCell.Tab.0.center" timestamp="1596888881499">
+    <state width="1863" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596889063964" />
+    <state width="1863" height="155" key="GridCell.Tab.0.center" timestamp="1596889063964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1863" height="302" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596888881499" />
-    <state width="1863" height="302" key="GridCell.Tab.0.left" timestamp="1596888881499">
+    <state width="1863" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596889063964" />
+    <state width="1863" height="155" key="GridCell.Tab.0.left" timestamp="1596889063964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1863" height="302" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596888881499" />
-    <state width="1863" height="302" key="GridCell.Tab.0.right" timestamp="1596888881499">
+    <state width="1863" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596889063964" />
+    <state width="1863" height="155" key="GridCell.Tab.0.right" timestamp="1596889063964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1863" height="302" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596888881499" />
+    <state width="1863" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596889063964" />
     <state width="1863" height="364" key="GridCell.Tab.1.bottom" timestamp="1596819536589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -351,10 +332,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="100" y="100" width="1720" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596113328455" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1596884259926">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1596892545237">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596884259926" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596892545237" />
     <state x="616" y="242" key="run.anything.popup" timestamp="1596141341251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

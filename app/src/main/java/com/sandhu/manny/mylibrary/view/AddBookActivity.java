@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary.api.pojos.BookResource;
+import com.sandhu.manny.mylibrary.api.pojo.BookResourcePojo;
 import com.sandhu.manny.mylibrary.api.GetBookService;
 
 import retrofit2.Call;
@@ -83,24 +83,26 @@ public class AddBookActivity extends AppCompatActivity {
                             .build();
 
                     GetBookService getBookService = retrofit.create(GetBookService.class);
-                    Call<BookResource> call = getBookService.getBookResource(isbnValue); //0984782850
+                    Call<BookResourcePojo> call = getBookService.getBookResource(isbnValue); //0984782850
 
-                    call.enqueue(new Callback<BookResource>() {
+                    call.enqueue(new Callback<BookResourcePojo>() {
                         @Override
-                        public void onResponse(Call<BookResource> call, Response<BookResource> response) {
+                        public void onResponse(Call<BookResourcePojo> call, Response<BookResourcePojo> response) {
 
                             if(!response.isSuccessful()){
                                 Toast.makeText(AddBookActivity.this, response.code(), Toast.LENGTH_SHORT).show();
                                 return;
                             }
 
-                            BookResource bookResource = (BookResource) response.body();
-                            System.err.println("HERERERE!!!! " + bookResource.getItems().getVolumeInfo().getAuthors());
+                            BookResourcePojo bookResource = (BookResourcePojo) response.body();
+                            titleTextView.setText(bookResource.getItems().getBookInfo().getTitle());
+                            publishedTextView.setText(bookResource.getItems().getPublishedData());
+
 
                         }
 
                         @Override
-                        public void onFailure(Call<BookResource> call, Throwable t) {
+                        public void onFailure(Call<BookResourcePojo> call, Throwable t) {
                             Toast.makeText(AddBookActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
