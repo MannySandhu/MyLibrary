@@ -4,7 +4,6 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.sandhu.manny.mylibrary.api.FetchBookResourceService;
 import com.sandhu.manny.mylibrary.dao.BookDao;
 import com.sandhu.manny.mylibrary.db.AppDatabase;
 import com.sandhu.manny.mylibrary.model.Book;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class BookRepository implements FetchBookResourceService {
+public class BookRepository {
 
     private BookDao bookDao;
     private LiveData<List<Book>> allBooks;
@@ -44,10 +43,6 @@ public class BookRepository implements FetchBookResourceService {
         return bookResult.take();
     }
 
-    @Override
-    public Book fetchBookHttpRequest(long isbn) {
-        return null;
-    }
 
     public LiveData<List<Book>> getAllBooks() {
         return allBooks;

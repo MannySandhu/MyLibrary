@@ -43,7 +43,7 @@ public class LibraryViewModel extends AndroidViewModel implements ViewModelProvi
     }
 
     public Book findBook(long isbn){
-        return bookRepository.fetchBookHttpRequest(isbn);
+        return null;
     }
 
     public Book getBookByIsbn(long isbn) throws InterruptedException {

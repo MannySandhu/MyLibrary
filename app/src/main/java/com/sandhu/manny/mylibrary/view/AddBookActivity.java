@@ -1,6 +1,5 @@
 package com.sandhu.manny.mylibrary.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,19 +14,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.sandhu.manny.mylibrary.R;
-import com.sandhu.manny.mylibrary.db.AppDatabase;
-import com.sandhu.manny.mylibrary.model.Book;
+import com.sandhu.manny.mylibrary.api.pojos.BookResource;
+import com.sandhu.manny.mylibrary.api.GetBookService;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddBookActivity extends AppCompatActivity {
 
@@ -79,29 +76,35 @@ public class AddBookActivity extends AppCompatActivity {
                     Toast.makeText(AddBookActivity.this, "ISBN must be 10 or 13 digits", Toast.LENGTH_LONG).show();
                 } else {
 
-                    String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbnValue;
-                    //Do http request
-                    final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url,
-                            null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
+                    String url = "https://www.googleapis.com/books/v1/";
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(url)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
 
-                            String[] result = jsonParser(response);
-                            if (result[0] != null) {
-                                titleTextView.setText(result[0]);
-                                authorTextView.setText(result[1]);
-                                genreTextView.setText(result[2]);
-                                pagesTextView.setText(result[3]);
-                                publishedTextView.setText(result[4]);
-                            }
-                        }
-                    }, new Response.ErrorListener() {
+                    GetBookService getBookService = retrofit.create(GetBookService.class);
+                    Call<BookResource> call = getBookService.getBookResource(isbnValue); //0984782850
+
+                    call.enqueue(new Callback<BookResource>() {
                         @Override
-                        public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
+                        public void onResponse(Call<BookResource> call, Response<BookResource> response) {
+
+                            if(!response.isSuccessful()){
+                                Toast.makeText(AddBookActivity.this, response.code(), Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+                            BookResource bookResource = (BookResource) response.body();
+                            System.err.println("HERERERE!!!! " + bookResource.getItems().getVolumeInfo().getAuthors());
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<BookResource> call, Throwable t) {
+                            Toast.makeText(AddBookActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-                    requestQueue.add(jsObjRequest);
+
                 }
             }
         });
@@ -114,11 +117,6 @@ public class AddBookActivity extends AppCompatActivity {
         String genre = genreTextView.getText().toString();
         String pages = pagesTextView.getText().toString();
         String published = publishedTextView.getText().toString();
-
-//        String title = "some title";
-//        String genre = "some genre";
-//        String pages = "345";
-//        String published = "date";
 
         Intent data = new Intent();
         data.putExtra(EXTRA_ISBN, isbn);
@@ -148,41 +146,6 @@ public class AddBookActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    public String[] jsonParser(JSONObject response) {
-        String[] result = new String[5]; // volume information holder
-        try {
-            String totalItems = response.optString("totalItems");
-            if (totalItems.equalsIgnoreCase("0")) {
-
-                Toast.makeText(AddBookActivity.this, "Invalid ISBN", Toast.LENGTH_LONG).show();
-            } else {
-                JSONArray jsonArray = response.getJSONArray("items");
-                for (int i = 0; i < jsonArray.length(); ++i) {
-                    JSONObject items = jsonArray.getJSONObject(i);
-
-                    // get title info
-                    String title = items.getJSONObject("volumeInfo").optString("title");
-                    String subtitle = items.getJSONObject("volumeInfo").optString("subtitle");
-                    result[0] = title + " : " + subtitle;
-
-                    // get author info
-                    result[1] = items.getJSONObject("volumeInfo").optString("authors");
-
-                    // get category and page count info
-                    result[2] = items.getJSONObject("volumeInfo").optString("categories");
-                    result[3] = items.getJSONObject("volumeInfo").optString("pageCount");
-
-                    // get published date
-                    String publishedDate = items.getJSONObject("volumeInfo").optString("publishedDate");
-                    result[4] = publishedDate;
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return result;
     }
 
 }
